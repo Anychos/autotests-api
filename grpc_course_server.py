@@ -19,7 +19,7 @@ def serve():
 
     # Создаем сервер с использованием пула потоков (до 10 потоков)
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    # Регистрируем сервис UserService на сервере
+    # Регистрируем сервис CourseService на сервере
     course_service_pb2_grpc.add_CourseServiceServicer_to_server(CourseServiceServicer(), server)
     # Настраиваем сервер для прослушивания порта 50051
     server.add_insecure_port('[::]:50051')
