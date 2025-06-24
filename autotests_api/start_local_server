@@ -1,0 +1,5 @@
+Активируем виртуальное окружение:
+source venv/bin/activate
+
+Запустите сервер:
+uvicorn main:app --reload

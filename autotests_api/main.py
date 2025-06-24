@@ -1,1 +1,0 @@
-print("Create a new project")
