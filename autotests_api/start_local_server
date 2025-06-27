@@ -1,5 +1,5 @@
 Активируем виртуальное окружение:
-source venv/bin/activate
+.\venv\Scripts\activate
 
 Запустите сервер:
 uvicorn main:app --reload
