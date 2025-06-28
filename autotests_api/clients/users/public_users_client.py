@@ -1,5 +1,7 @@
 from typing import TypedDict
 from httpx import Response
+
+from auto_tests.httpx_create_user import response
 from clients.api_client import APIClient
 
 class CreateUserRequest(TypedDict):
@@ -25,4 +27,3 @@ class PublicUsersClient(APIClient):
 
         response = self.post("/api/v1/users", json=request)
         return response
-

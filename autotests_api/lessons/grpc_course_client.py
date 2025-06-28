@@ -1,5 +1,5 @@
 import grpc
-import course_service_pb2
+from lessons import course_service_pb2
 import course_service_pb2_grpc
 
 # Устанавливаем соединение с сервером
