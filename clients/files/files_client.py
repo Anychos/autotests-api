@@ -1,22 +1,8 @@
 from httpx import Response
 from clients.base_client import BaseClient
-from typing import TypedDict
-from clients.private_builder import AuthUserDict, get_private_client
+from clients.files.files_schema import CreateFileRequestSchema, CreateFileResponseSchema
+from clients.private_builder import AuthUserSchema, get_private_client
 
-
-class CreateFileRequestBody(TypedDict):
-    filename: str
-    directory: str
-    upload_file: str
-
-class File(TypedDict):
-    id: str
-    filename: str
-    directory: str
-    url: str
-
-class CreateFileResponse(TypedDict):
-    file: File
 
 class FilesClient(BaseClient):
     """
@@ -31,7 +17,7 @@ class FilesClient(BaseClient):
         """
         return self.get(f'/api/v1/files/{file_id}')
 
-    def create_file_api(self, request_body: CreateFileRequestBody) -> Response:
+    def create_file_api(self, request_body: CreateFileRequestSchema) -> Response:
         """
         Загрузка файла
 
@@ -40,11 +26,11 @@ class FilesClient(BaseClient):
         """
         return self.post(
             '/api/v1/files',
-            data=request_body,
-            files={'upload_file': open(request_body['upload_file'], 'rb')}
+            data=request_body.model_dump(by_alias=True, exclude={'upload_file'}),
+            files={'upload_file': open(request_body.upload_file, 'rb')}
         )
 
-    def create_file(self, request_body: CreateFileRequestBody) -> CreateFileResponse:
+    def create_file(self, request_body: CreateFileRequestSchema) -> CreateFileResponseSchema:
         """
         Загрузка файла
 
@@ -52,7 +38,7 @@ class FilesClient(BaseClient):
         :return: ответ сервера
         """
         response = self.create_file_api(request_body)
-        return response.json()
+        return CreateFileResponseSchema.model_validate_json(response.text)
 
     def delete_file_api(self, file_id: str) -> Response:
         """
@@ -63,5 +49,5 @@ class FilesClient(BaseClient):
         """
         return self.delete(f'/api/v1/files/{file_id}')
 
-def get_private_files_client(user: AuthUserDict) -> FilesClient:
+def get_private_files_client(user: AuthUserSchema) -> FilesClient:
     return FilesClient(client=get_private_client(user))

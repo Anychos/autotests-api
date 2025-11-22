@@ -1,93 +1,55 @@
 from clients.base_client import BaseClient
 from httpx import Response
-from typing import TypedDict
-from clients.private_builder import AuthUserDict, get_private_client
+from clients.exercises.exercises_schema import GetExercisesReqSchema, GetExercisesResponseSchema, \
+    CreateExerciseRequestSchema, CreateExercisesResponseSchema, UpdateExerciseRequestSchema, \
+    UpdateExercisesResponseSchema
+from clients.private_builder import AuthUserSchema, get_private_client
 
-
-class GetExercises(TypedDict):
-    courseId: str
-
-class CreateExerciseRequestBody(TypedDict):
-    title: str
-    courseId: str
-    maxScore: int
-    minScore: int
-    orderIndex: int
-    description: str
-    estimatedTime: str
-
-class UpdateExerciseRequestBody(TypedDict):
-    title: str | None
-    courseId: str | None
-    maxScore: int | None
-    minScore: int | None
-    orderIndex: int | None
-    description: str | None
-    estimatedTime: str | None
-
-class Exercise(TypedDict):
-    id: str
-    title: str
-    courseId: str
-    maxScore: int
-    minScore: int
-    orderIndex: int
-    description: str
-    estimatedTime: str
-
-class GetExercisesResponseDict(TypedDict):
-    exercises: list[Exercise]
-
-class CreateExercisesResponseDict(TypedDict):
-    exercise: Exercise
-
-class UpdateExercisesResponseDict(TypedDict):
-    exercise: list[Exercise]
 
 class ExercisesClient(BaseClient):
     """
     Клиент для работы с упражнениями
     """
-    def get_exercises_api(self, query: GetExercises) -> Response:
+    def get_exercises_api(self, query: GetExercisesReqSchema) -> Response:
         """
         Выполняет GET запрос для получения списка упражнений
 
         :param query: параметры запроса
         :return: ответ сервера
         """
-        return self.get("/api/v1/exercises", params=query)
+        return self.get("/api/v1/exercises", params=query.model_dump(by_alias=True))
 
-    def get_exercises(self, course_id: GetExercises) -> GetExercisesResponseDict:
+    def get_exercises(self, course_id: GetExercisesReqSchema) -> GetExercisesResponseSchema:
         response = self.get_exercises_api(course_id)
         return response.json()
 
-    def get_exercise_api(self, query: GetExercises) -> Response:
+    def get_exercise_api(self, query: GetExercisesReqSchema) -> Response:
         """
         Выполняет GET запрос для получения упражнения по его id
 
         :param exercise_id: id упражнения
         :return: ответ сервера
         """
-        return self.get("/api/v1/exercises", params=query)
+        return self.get("/api/v1/exercises", params=query.model_dump(by_alias=True))
 
-    def get_exercise(self, exercise_id: GetExercises) -> GetExercisesResponseDict:
+    def get_exercise(self, exercise_id: GetExercisesReqSchema) -> GetExercisesResponseSchema:
         response = self.get_exercise_api(exercise_id)
-        return response.json()
+        return GetExercisesResponseSchema.model_validate_json(response.text)
 
-    def create_exercise_api(self, request_body: CreateExerciseRequestBody) -> Response:
+    def create_exercise_api(self, request_body: CreateExerciseRequestSchema) -> Response:
         """
         Выполняет POST запрос для создания упражнения
 
         :param request_body: тело запроса
         :return: ответ сервера
         """
-        return self.post("/api/v1/exercises", json=request_body)
+        return self.post("/api/v1/exercises", json=request_body.model_dump(by_alias=True))
 
-    def create_exercise(self, request_body: CreateExerciseRequestBody) -> CreateExercisesResponseDict:
+    def create_exercise(self, request_body: CreateExerciseRequestSchema) -> CreateExercisesResponseSchema:
         response = self.create_exercise_api(request_body)
-        return response.json()
+        return CreateExercisesResponseSchema.model_validate_json(response.text)
 
-    def update_exercise_api(self, exercise_id: GetExercises, request_body: UpdateExerciseRequestBody) -> Response:
+    def update_exercise_api(self, exercise_id: GetExercisesReqSchema, request_body: UpdateExerciseRequestSchema) -> Response:
         """
         Выполняет PATCH запрос для обновления упражнения
 
@@ -95,11 +57,11 @@ class ExercisesClient(BaseClient):
         :param request_body: тело запроса
         :return: ответ сервера
         """
-        return self.patch(f"/api/v1/exercises/{exercise_id}", json=request_body)
+        return self.patch(f"/api/v1/exercises/{exercise_id}", json=request_body.model_dump(by_alias=True))
 
-    def update_exercise(self, exercise_id: GetExercises, request_body: UpdateExerciseRequestBody) -> UpdateExercisesResponseDict:
+    def update_exercise(self, exercise_id: GetExercisesReqSchema, request_body: UpdateExerciseRequestSchema) -> UpdateExercisesResponseSchema:
         response = self.update_exercise_api(exercise_id, request_body)
-        return response.json()
+        return UpdateExercisesResponseSchema.model_validate_json(response.text)
 
     def delete_exercise_api(self, exercise_id: str) -> Response:
         """
@@ -110,5 +72,5 @@ class ExercisesClient(BaseClient):
         """
         return self.delete(f"/api/v1/exercises/{exercise_id}")
 
-def get_private_exercises_client(user: AuthUserDict) -> ExercisesClient:
+def get_private_exercises_client(user: AuthUserSchema) -> ExercisesClient:
     return ExercisesClient(client=get_private_client(user))
