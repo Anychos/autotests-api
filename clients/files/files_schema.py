@@ -1,12 +1,13 @@
-from pydantic import BaseModel, HttpUrl
+from pydantic import BaseModel, HttpUrl, Field
+from tools.test_data_generator import fake
 
 
 class CreateFileRequestSchema(BaseModel):
     """
     Описание модели запроса на загрузку файла
     """
-    filename: str
-    directory: str
+    filename: str = Field(default='image.png')
+    directory: str = Field(default='courses')
     upload_file: str
 
 class FileSchema(BaseModel):

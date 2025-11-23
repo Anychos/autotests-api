@@ -1,6 +1,6 @@
 from clients.base_client import BaseClient
 from httpx import Response
-from clients.exercises.exercises_schema import GetExercisesReqSchema, GetExercisesResponseSchema, \
+from clients.exercises.exercises_schema import GetExercisesRequestSchema, GetExercisesResponseSchema, \
     CreateExerciseRequestSchema, CreateExercisesResponseSchema, UpdateExerciseRequestSchema, \
     UpdateExercisesResponseSchema
 from clients.private_builder import AuthUserSchema, get_private_client
@@ -10,7 +10,7 @@ class ExercisesClient(BaseClient):
     """
     Клиент для работы с упражнениями
     """
-    def get_exercises_api(self, query: GetExercisesReqSchema) -> Response:
+    def get_exercises_api(self, query: GetExercisesRequestSchema) -> Response:
         """
         Выполняет GET запрос для получения списка упражнений
 
@@ -19,11 +19,11 @@ class ExercisesClient(BaseClient):
         """
         return self.get("/api/v1/exercises", params=query.model_dump(by_alias=True))
 
-    def get_exercises(self, course_id: GetExercisesReqSchema) -> GetExercisesResponseSchema:
+    def get_exercises(self, course_id: GetExercisesRequestSchema) -> GetExercisesResponseSchema:
         response = self.get_exercises_api(course_id)
         return response.json()
 
-    def get_exercise_api(self, query: GetExercisesReqSchema) -> Response:
+    def get_exercise_api(self, query: GetExercisesRequestSchema) -> Response:
         """
         Выполняет GET запрос для получения упражнения по его id
 
@@ -32,7 +32,7 @@ class ExercisesClient(BaseClient):
         """
         return self.get("/api/v1/exercises", params=query.model_dump(by_alias=True))
 
-    def get_exercise(self, exercise_id: GetExercisesReqSchema) -> GetExercisesResponseSchema:
+    def get_exercise(self, exercise_id: GetExercisesRequestSchema) -> GetExercisesResponseSchema:
         response = self.get_exercise_api(exercise_id)
         return GetExercisesResponseSchema.model_validate_json(response.text)
 
@@ -49,7 +49,7 @@ class ExercisesClient(BaseClient):
         response = self.create_exercise_api(request_body)
         return CreateExercisesResponseSchema.model_validate_json(response.text)
 
-    def update_exercise_api(self, exercise_id: GetExercisesReqSchema, request_body: UpdateExerciseRequestSchema) -> Response:
+    def update_exercise_api(self, exercise_id: GetExercisesRequestSchema, request_body: UpdateExerciseRequestSchema) -> Response:
         """
         Выполняет PATCH запрос для обновления упражнения
 
@@ -59,7 +59,7 @@ class ExercisesClient(BaseClient):
         """
         return self.patch(f"/api/v1/exercises/{exercise_id}", json=request_body.model_dump(by_alias=True))
 
-    def update_exercise(self, exercise_id: GetExercisesReqSchema, request_body: UpdateExerciseRequestSchema) -> UpdateExercisesResponseSchema:
+    def update_exercise(self, exercise_id: GetExercisesRequestSchema, request_body: UpdateExerciseRequestSchema) -> UpdateExercisesResponseSchema:
         response = self.update_exercise_api(exercise_id, request_body)
         return UpdateExercisesResponseSchema.model_validate_json(response.text)
 

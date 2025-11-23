@@ -1,4 +1,7 @@
+from importlib.metadata import files
+
 from pydantic import BaseModel, Field, EmailStr, constr, ConfigDict
+from tools.test_data_generator import fake
 
 
 class UserSchema(BaseModel):
@@ -25,11 +28,11 @@ class CreateUserRequestSchema(BaseModel):
     """
     model_config = ConfigDict(populate_by_name=True)
 
-    email: EmailStr
-    password: constr(min_length=1, max_length=250)
-    last_name: constr(min_length=1, max_length=50) = Field(alias="lastName")
-    first_name: constr(min_length=1, max_length=50) = Field(alias="firstName")
-    middle_name: constr(min_length=1, max_length=50) = Field(alias="middleName")
+    email: EmailStr = Field(default_factory=fake.email)
+    password: constr(min_length=1, max_length=250) = Field(default_factory=fake.password)
+    last_name: constr(min_length=1, max_length=50) = Field(alias="lastName", default_factory=fake.last_name)
+    first_name: constr(min_length=1, max_length=50) = Field(alias="firstName", default_factory=fake.first_name)
+    middle_name: constr(min_length=1, max_length=50) = Field(alias="middleName", default_factory=fake.middle_name)
 
 class CreateUserResponseSchema(BaseModel):
     """
@@ -43,10 +46,10 @@ class UpdateUserRequestSchema(BaseModel):
     """
     model_config = ConfigDict(populate_by_name=True)
 
-    email: EmailStr
-    last_name: constr(min_length=1, max_length=50) = Field(default=None, alias="lastName")
-    first_name: constr(min_length=1, max_length=50) = Field(default=None, alias="firstName")
-    middle_name: constr(min_length=1, max_length=50) = Field(default=None, alias="middleName")
+    email: EmailStr | None = Field(default_factory=fake.email)
+    last_name: constr(min_length=1, max_length=50) | None = Field(alias="lastName", default_factory=fake.last_name)
+    first_name: constr(min_length=1, max_length=50) | None = Field(alias="firstName", default_factory=fake.first_name)
+    middle_name: constr(min_length=1, max_length=50) | None = Field(alias="middleName", default_factory=fake.middle_name)
 
 class UpdateUserResponseSchema(BaseModel):
     """

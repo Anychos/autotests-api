@@ -5,17 +5,10 @@ from clients.files.files_schema import CreateFileRequestSchema
 from clients.private_builder import AuthUserSchema
 from clients.users.users_schema import CreateUserRequestSchema
 from clients.users.public_user_client import get_public_user_client
-from tools.test_data_generator import fake
 
 
 public_user_client = get_public_user_client()
-create_user_request_body = CreateUserRequestSchema(
-    email=fake.email(),
-    password=fake.password(),
-    last_name=fake.last_name(),
-    first_name=fake.first_name(),
-    middle_name=fake.middle_name()
-)
+create_user_request_body = CreateUserRequestSchema()
 create_user_response = public_user_client.create_user(create_user_request_body)
 print(create_user_response)
 
@@ -28,19 +21,12 @@ files_client  = get_private_files_client(auth_user_dict)
 courses_client = get_private_courses_client(auth_user_dict)
 
 create_file_request = CreateFileRequestSchema(
-    filename='image.png',
-    directory='courses',
     upload_file='./test_data/image.png'
 )
 create_file_response = files_client.create_file(create_file_request)
 print(create_file_response)
 
 create_course_request = CreateCourseRequestSchema(
-    title=fake.text(),
-    max_score=fake.max_score(),
-    min_score=fake.min_score(),
-    description=fake.description(),
-    estimated_time=fake.estimated_time(),
     preview_file_id=create_file_response.file.id,
     created_by_user_id=create_user_response.user.id
 )
