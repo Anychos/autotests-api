@@ -7,18 +7,16 @@ from clients.files.files_schema import CreateFileRequestSchema
 from clients.private_builder import AuthUserSchema
 from clients.users.public_user_client import get_public_user_client
 from clients.users.users_schema import CreateUserRequestSchema
-from faker import random_email
+from tools.test_data_generator import fake
 
-
-email = random_email()
 
 public_user_client = get_public_user_client()
 create_user_request_body = CreateUserRequestSchema(
-    email=email,
-    password='password',
-    last_name='lastName',
-    first_name='firstName',
-    middle_name='middleName'
+    email=fake.email(),
+    password=fake.password(),
+    last_name=fake.last_name(),
+    first_name=fake.first_name(),
+    middle_name=fake.middle_name()
 )
 create_user_response = public_user_client.create_user(create_user_request_body)
 print(create_user_response)
@@ -40,11 +38,11 @@ create_file_response = files_client.create_file(create_file_request)
 print(create_file_response)
 
 create_course_request = CreateCourseRequestSchema(
-    title='title',
-    max_score=100,
-    min_score=0,
-    description='description',
-    estimated_time="one hour",
+    title=fake.text(),
+    max_score=fake.max_score(),
+    min_score=fake.min_score(),
+    description=fake.description(),
+    estimated_time=fake.estimated_time(),
     preview_file_id=create_file_response.file.id,
     created_by_user_id=create_user_response.user.id
 )
@@ -53,13 +51,13 @@ print(create_course_response)
 
 exercises_client = get_private_exercises_client(auth_user_dict)
 create_exercise_request = CreateExerciseRequestSchema(
-    title='title',
+    title=fake.text(),
     course_id=create_course_response.course.id,
-    max_score=100,
-    min_score=0,
+    max_score=fake.max_score(),
+    min_score=fake.min_score(),
     order_index=1,
-    description='description',
-    estimated_time='one hour'
+    description=fake.description(),
+    estimated_time=fake.estimated_time()
 )
 create_exercise_response = exercises_client.create_exercise(create_exercise_request)
 print(create_exercise_response)

@@ -2,18 +2,16 @@ from clients.private_builder import AuthUserSchema
 from clients.users.private_user_client import get_private_user_client
 from clients.users.public_user_client import get_public_user_client
 from clients.users.users_schema import CreateUserRequestSchema
-from faker import random_email
+from tools.test_data_generator import fake
 
-
-email = random_email()
 
 public_user_client = get_public_user_client()
 create_user_request_body = CreateUserRequestSchema(
-    email=email,
-    password='password',
-    last_name='lastName',
-    first_name='firstName',
-    middle_name='middleName'
+    email=fake.email(),
+    password=fake.password(),
+    last_name=fake.last_name(),
+    first_name=fake.first_name(),
+    middle_name=fake.middle_name()
 )
 create_user_response = public_user_client.create_user(create_user_request_body)
 print(create_user_response)
