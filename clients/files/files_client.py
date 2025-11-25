@@ -50,4 +50,9 @@ class FilesClient(BaseClient):
         return self.delete(f'/api/v1/files/{file_id}')
 
 def get_private_files_client(user: AuthUserSchema) -> FilesClient:
+    """
+    Функция получения клиента для работы с методами файлов
+
+    :return: Готовый к использованию Client
+    """
     return FilesClient(client=get_private_client(user))

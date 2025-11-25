@@ -73,4 +73,9 @@ class ExercisesClient(BaseClient):
         return self.delete(f"/api/v1/exercises/{exercise_id}")
 
 def get_private_exercises_client(user: AuthUserSchema) -> ExercisesClient:
+    """
+    Функция получения клиента для работы с упражнениями
+
+    :return: Готовый к использованию Client
+    """
     return ExercisesClient(client=get_private_client(user))

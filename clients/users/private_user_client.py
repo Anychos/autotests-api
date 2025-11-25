@@ -55,4 +55,9 @@ class PrivateUserClient(BaseClient):
         return self.delete(f'/api/v1/users/{user_id}')
 
 def get_private_user_client(user: AuthUserSchema) -> PrivateUserClient:
+    """
+    Функция получения клиента для работы с приватными методами
+
+    :return: Готовый к использованию Client
+    """
     return PrivateUserClient(client=get_private_client(user))

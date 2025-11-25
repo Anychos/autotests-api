@@ -66,4 +66,9 @@ class CoursesClient(BaseClient):
         return self.delete(f'/api/v1/courses/{course_id}')
 
 def get_private_courses_client(user: AuthUserSchema) -> CoursesClient:
+    """
+    Функция получения клиента для работы с методами курсов
+
+    :return: Готовый к использованию Client
+    """
     return CoursesClient(client=get_private_client(user))

@@ -4,17 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35dcc119-d232-4ca4-bf9e-df26db2ff1e6" name="Changes" comment="Практикуемся в работе с JSON schema">
+    <list default="true" id="35dcc119-d232-4ca4-bf9e-df26db2ff1e6" name="Changes" comment="Практика работы с генерацией случайных данных">
+      <change afterPath="$PROJECT_DIR$/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_authentication.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_users.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/assertions/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/assertions/auth_assertions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/assertions/users_assertions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/base_assertions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_client_create_course.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_client_create_course.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_client_create_exercise.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_client_create_exercise.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_client_get_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_client_get_user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/auth/auth_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/auth/auth_schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/courses/courses_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/courses/courses_schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/auth/auth_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/auth/auth_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/courses/courses_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/courses/courses_client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clients/exercises/exercises_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/exercises/exercises_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/exercises/exercises_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/exercises/exercises_schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/files/files_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/files/files_schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/users/users_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/users/users_schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/files/files_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/files/files_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/users/private_user_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/users/private_user_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/users/public_user_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/users/public_user_client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/test_data_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/test_data_generator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,45 +60,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.api_client_create_course.executor": "Run",
-    "Python.api_client_create_exercise (1).executor": "Run",
-    "Python.api_client_create_exercise.executor": "Run",
-    "Python.api_client_create_user.executor": "Run",
-    "Python.api_client_get_user (1).executor": "Run",
-    "Python.client.executor": "Run",
-    "Python.course_schema.executor": "Run",
-    "Python.example_1.executor": "Run",
-    "Python.exercises_client.executor": "Run",
-    "Python.faker.executor": "Run",
-    "Python.json_schema.executor": "Run",
-    "Python.pydantic_learn.executor": "Run",
-    "Python.test.executor": "Run",
-    "Python.test_create_exercise.executor": "Run",
-    "Python.test_data_generator.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/anton/PycharmProjects/autotests-api",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests for test_authentication.test_login.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_users.test_create_user.executor&quot;: &quot;Run&quot;,
+    &quot;Python.api_client_create_course.executor&quot;: &quot;Run&quot;,
+    &quot;Python.api_client_create_exercise (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.api_client_create_exercise.executor&quot;: &quot;Run&quot;,
+    &quot;Python.api_client_create_user.executor&quot;: &quot;Run&quot;,
+    &quot;Python.api_client_get_user (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.course_schema.executor&quot;: &quot;Run&quot;,
+    &quot;Python.example_1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exercises_client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.faker.executor&quot;: &quot;Run&quot;,
+    &quot;Python.json_schema.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pydantic_learn.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_create_exercise.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_data_generator.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/anton/PycharmProjects/autotests-api&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\anton\PycharmProjects\autotests-api" />
+      <recent name="C:\Users\anton\PycharmProjects\autotests-api\tools\assertions" />
       <recent name="C:\Users\anton\PycharmProjects\autotests-api\tools" />
       <recent name="C:\Users\anton\PycharmProjects\autotests-api\clients\users" />
       <recent name="C:\Users\anton\PycharmProjects\autotests-api\test_data" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.api_client_create_course">
+  <component name="RunManager" selected="Python tests.Python tests for test_authentication.test_login">
     <configuration name="api_client_create_course" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="autotests-api" />
       <option name="ENV_FILES" value="" />
@@ -164,59 +172,45 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pydantic_json_schema_get_user" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_authentication.test_login" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="autotests-api" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\anton\PycharmProjects\autotests-api\pydantic_json_schema_get_user.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_authentication.test_login&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="test_data_generator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_users.test_create_user" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="autotests-api" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tools" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/test_data_generator.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_users.test_create_user&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for test_authentication.test_login" />
+        <item itemvalue="Python tests.Python tests for test_users.test_create_user" />
         <item itemvalue="Python.api_client_create_course" />
         <item itemvalue="Python.api_client_create_exercise" />
         <item itemvalue="Python.api_client_get_user (1)" />
-        <item itemvalue="Python.test_data_generator" />
-        <item itemvalue="Python.pydantic_json_schema_get_user" />
       </list>
     </recent_temporary>
   </component>
@@ -256,7 +250,11 @@
       <workItem from="1763773721707" duration="7102000" />
       <workItem from="1763784729977" duration="2454000" />
       <workItem from="1763793746002" duration="3618000" />
-      <workItem from="1763861638684" duration="5733000" />
+      <workItem from="1763861638684" duration="5841000" />
+      <workItem from="1763877635180" duration="417000" />
+      <workItem from="1763879124348" duration="3100000" />
+      <workItem from="1763948590757" duration="3892000" />
+      <workItem from="1764037573738" duration="398000" />
     </task>
     <task id="LOCAL-00001" summary="Практика написания Pydantic-моделей">
       <option name="closed" value="true" />
@@ -282,7 +280,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763862874411</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Практика работы с генерацией случайных данных">
+      <option name="closed" value="true" />
+      <created>1763873829159</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1763873829159</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,7 +298,8 @@
     <MESSAGE value="Практика написания Pydantic-моделей" />
     <MESSAGE value="Практикуемся в применении Pydantic в API клиентах" />
     <MESSAGE value="Практикуемся в работе с JSON schema" />
-    <option name="LAST_COMMIT_MESSAGE" value="Практикуемся в работе с JSON schema" />
+    <MESSAGE value="Практика работы с генерацией случайных данных" />
+    <option name="LAST_COMMIT_MESSAGE" value="Практика работы с генерацией случайных данных" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/autotests_api$api_client_create_exercise.coverage" NAME="api_client_create_exercise Coverage Results" MODIFIED="1763873774867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -301,11 +308,12 @@
     <SUITE FILE_PATH="coverage/autotests_api$course_schema.coverage" NAME="course_schema Coverage Results" MODIFIED="1763701488742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/clients/courses" />
     <SUITE FILE_PATH="coverage/autotests_api$test_create_exercise.coverage" NAME="test_create_exercise Coverage Results" MODIFIED="1763605228911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/autotests_api$test.coverage" NAME="test Coverage Results" MODIFIED="1763517762962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/autotests_api$api_client_create_course.coverage" NAME="api_client_create_course Coverage Results" MODIFIED="1763873292321" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/autotests_api$api_client_create_course.coverage" NAME="api_client_create_course Coverage Results" MODIFIED="1763873796249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/autotests_api$api_client_create_exercise__1_.coverage" NAME="api_client_create_exercise (1) Coverage Results" MODIFIED="1763786604614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/autotests_api$json_schema.coverage" NAME="json_schema Coverage Results" MODIFIED="1763794468188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/clients/users" />
     <SUITE FILE_PATH="coverage/autotests_api$api_client_get_user__1_.coverage" NAME="api_client_get_user (1) Coverage Results" MODIFIED="1763873071100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/autotests_api$exercises_client.coverage" NAME="exercises_client Coverage Results" MODIFIED="1763517585919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/clients/exercises" />
+    <SUITE FILE_PATH="coverage/autotests_api$.coverage" NAME=" Coverage Results" MODIFIED="1763952992939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/autotests_api$test_data_generator.coverage" NAME="test_data_generator Coverage Results" MODIFIED="1763872940501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/autotests_api$client.coverage" NAME="client Coverage Results" MODIFIED="1763431849641" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
     <SUITE FILE_PATH="coverage/autotests_api$api_client_create_user.coverage" NAME="api_client_create_user Coverage Results" MODIFIED="1763862778167" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

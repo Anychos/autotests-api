@@ -2,6 +2,9 @@ from faker import Faker
 
 
 class Fake:
+    """
+    Класс с функциями генерации тестовых данных
+    """
     def __init__(self, faker: Faker):
         self.faker = faker
 

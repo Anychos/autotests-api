@@ -28,4 +28,9 @@ class PublicUserClient(BaseClient):
         return CreateUserResponseSchema.model_validate_json(response.text)
 
 def get_public_user_client() -> PublicUserClient:
+    """
+    Функция получения клиента для работы с публичными методами
+
+    :return: Готовый к использованию Client
+    """
     return PublicUserClient(client=get_public_client())

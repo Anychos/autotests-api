@@ -37,4 +37,9 @@ class AuthClient(BaseClient):
         return LoginResponseSchema.model_validate_json(response.text) # вернет объект json, не поднимет ошибку
 
 def get_auth_client() -> AuthClient:
+    """
+    Функция получения клиента для работы с методами авторизации
+
+    :return: Готовый к использованию Client
+    """
     return AuthClient(client=get_public_client())
