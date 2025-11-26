@@ -3,7 +3,7 @@ from clients.private_builder import AuthUserSchema
 from clients.users.private_user_client import get_private_user_client
 from clients.users.public_user_client import get_public_user_client
 from clients.users.users_schema import CreateUserRequestSchema, GetUserResponseSchema
-from tools.test_data_generator import fake
+from tools.data_generator import fake
 
 
 public_user_client = get_public_user_client()

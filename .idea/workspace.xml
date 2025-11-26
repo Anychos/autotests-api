@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35dcc119-d232-4ca4-bf9e-df26db2ff1e6" name="Changes" comment="Практика работы с pytest маркировками">
-      <change afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
+    <list default="true" id="35dcc119-d232-4ca4-bf9e-df26db2ff1e6" name="Changes" comment="Практика написания автотестов с использованием фикстур">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/users/private_user_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/users/private_user_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/auth/auth_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/auth/auth_schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/courses/courses_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/courses/courses_schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/exercises/exercises_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/exercises/exercises_schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/files/files_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/files/files_schema.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clients/users/users_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/users/users_schema.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pydantic_json_schema_get_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/pydantic_json_schema_get_user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_authentication.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_authentication.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_users.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_users.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/assertions/users_assertions.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/assertions/users_assertions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/test_data_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/data_generator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +243,7 @@
       <workItem from="1763879124348" duration="3100000" />
       <workItem from="1763948590757" duration="3892000" />
       <workItem from="1764037573738" duration="3489000" />
-      <workItem from="1764114242512" duration="2570000" />
+      <workItem from="1764114242512" duration="3225000" />
     </task>
     <task id="LOCAL-00001" summary="Практика написания Pydantic-моделей">
       <option name="closed" value="true" />
@@ -284,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764037996589</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Практика написания автотестов с использованием фикстур">
+      <option name="closed" value="true" />
+      <created>1764116870705</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1764116870705</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,7 +305,8 @@
     <MESSAGE value="Практикуемся в работе с JSON schema" />
     <MESSAGE value="Практика работы с генерацией случайных данных" />
     <MESSAGE value="Практика работы с pytest маркировками" />
-    <option name="LAST_COMMIT_MESSAGE" value="Практика работы с pytest маркировками" />
+    <MESSAGE value="Практика написания автотестов с использованием фикстур" />
+    <option name="LAST_COMMIT_MESSAGE" value="Практика написания автотестов с использованием фикстур" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/autotests_api$api_client_create_exercise.coverage" NAME="api_client_create_exercise Coverage Results" MODIFIED="1763873774867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

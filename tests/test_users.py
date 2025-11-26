@@ -6,12 +6,15 @@ from clients.users.users_schema import CreateUserRequestSchema, CreateUserRespon
 from http import HTTPStatus
 from tools.assertions.users_assertions import assert_get_user_response
 from tools.base_assertions import assert_status_code, assert_value
+from tools.data_generator import fake
 
 
 @pytest.mark.regression
 @pytest.mark.users
-def test_create_user(public_user_client: PublicUserClient):
-    request = CreateUserRequestSchema()
+@pytest.mark.parametrize('email', ['mail.ru', 'gmail.com', 'example.com'])
+def test_create_user(email: str, public_user_client: PublicUserClient):
+    email = fake.email(email)
+    request = CreateUserRequestSchema(email=email)
     response = public_user_client.create_user_api(request)
     response_data = CreateUserResponseSchema.model_validate_json(response.text)
     assert_status_code(response.status_code, HTTPStatus.OK)

@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field, ConfigDict
 from clients.files.files_schema import FileSchema
 from clients.users.users_schema import UserSchema
-from tools.test_data_generator import fake
+from tools.data_generator import fake
 
 
 class CourseSchema(BaseModel):

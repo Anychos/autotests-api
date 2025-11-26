@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field, EmailStr, constr, ConfigDict
-from tools.test_data_generator import fake
+from tools.data_generator import fake
 
 
 class UserSchema(BaseModel):

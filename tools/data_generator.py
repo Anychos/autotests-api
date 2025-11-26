@@ -11,8 +11,15 @@ class Fake:
     def description(self) -> str:
         return self.faker.text()
 
-    def email(self) -> str:
-        return self.faker.email()
+    def email(self, domain: str | None = None) -> str:
+        """
+        Генерирует случайный email.
+
+        :param domain: Домен электронной почты (например, "example.com").
+        Если не указан, будет использован случайный домен.
+        :return: Случайный email.
+        """
+        return self.faker.email(domain=domain)
 
     def password(self) -> str:
         return self.faker.password()
