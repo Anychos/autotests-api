@@ -1,14 +1,14 @@
 from httpx import Response
 from clients.base_client import BaseClient
 from clients.private_builder import get_private_client, AuthUserSchema
-from clients.users.users_schema import UpdateUserRequestSchema, GerUserResponseSchema
+from clients.users.users_schema import UpdateUserRequestSchema, GetUserResponseSchema
 
 
 class PrivateUserClient(BaseClient):
     """
     Клиент для работы с методами авторизованного пользователя
     """
-    def get_current_user_api(self) -> Response:
+    def get_user_me_api(self) -> Response:
         """
         Получение информации о текущем пользователе
 
@@ -25,7 +25,7 @@ class PrivateUserClient(BaseClient):
         """
         return self.get(f'/api/v1/users/{user_id}')
 
-    def get_user_by_id(self, user_id: str) -> GerUserResponseSchema:
+    def get_user_by_id(self, user_id: str) -> GetUserResponseSchema:
         """
         Функция для получения сущности пользователя
 
@@ -33,7 +33,7 @@ class PrivateUserClient(BaseClient):
         :return: ответ сервера
         """
         response = self.get_user_by_id_api(user_id)
-        return GerUserResponseSchema.model_validate_json(response.text)
+        return GetUserResponseSchema.model_validate_json(response.text)
 
     def update_user_api(self, user_id: str, request_body: UpdateUserRequestSchema) -> Response:
         """

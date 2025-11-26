@@ -1,5 +1,3 @@
-from importlib.metadata import files
-
 from pydantic import BaseModel, Field, EmailStr, constr, ConfigDict
 from tools.test_data_generator import fake
 
@@ -16,7 +14,7 @@ class UserSchema(BaseModel):
     first_name: constr(min_length=1, max_length=50) = Field(alias="firstName")
     middle_name: constr(min_length=1, max_length=50) = Field(alias="middleName")
 
-class GerUserResponseSchema(BaseModel):
+class GetUserResponseSchema(BaseModel):
     """
     Описание модели ответа на запрос получения пользователя
     """

@@ -1,18 +1,28 @@
 import jsonschema
 import pytest
-from clients.users.public_user_client import get_public_user_client
-from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema
+from clients.users.private_user_client import PrivateUserClient
+from clients.users.public_user_client import PublicUserClient
+from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, GetUserResponseSchema
 from http import HTTPStatus
+from tools.assertions.users_assertions import assert_get_user_response
 from tools.base_assertions import assert_status_code, assert_value
 
 
 @pytest.mark.regression
 @pytest.mark.users
-def test_create_user():
-    public_user_client = get_public_user_client()
-    create_user_request = CreateUserRequestSchema()
-    create_user_response = public_user_client.create_user_api(create_user_request)
-    create_user_response_data = CreateUserResponseSchema.model_validate_json(create_user_response.text)
-    assert_status_code(create_user_response.status_code, HTTPStatus.OK)
-    assert_value(create_user_response_data.user.email, create_user_request.email, 'email')
-    jsonschema.validate(instance=create_user_response.json(), schema=create_user_response_data.model_json_schema())
+def test_create_user(public_user_client: PublicUserClient):
+    request = CreateUserRequestSchema()
+    response = public_user_client.create_user_api(request)
+    response_data = CreateUserResponseSchema.model_validate_json(response.text)
+    assert_status_code(response.status_code, HTTPStatus.OK)
+    assert_value(response_data.user.email, request.email, 'email')
+    jsonschema.validate(instance=response.json(), schema=response_data.model_json_schema())
+
+@pytest.mark.regression
+@pytest.mark.users
+def test_get_user_me(function_create_user, private_user_client: PrivateUserClient):
+    response = private_user_client.get_user_me_api()
+    assert_status_code(response.status_code, HTTPStatus.OK)
+    response_data = GetUserResponseSchema.model_validate_json(response.text)
+    assert_get_user_response(function_create_user.response, response_data)
+    jsonschema.validate(instance=response.json(), schema=response_data.model_json_schema())
