@@ -1,4 +1,5 @@
 from httpx import Response
+
 from clients.base_client import BaseClient
 from clients.public_builder import get_public_client
 from clients.auth.auth_schema import LoginRequestSchema, RefreshRequestSchema, LoginResponseSchema

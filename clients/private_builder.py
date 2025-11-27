@@ -1,16 +1,19 @@
 from httpx import Client
 from pydantic import BaseModel
+from functools import lru_cache # модуль для кэширования
+
 from clients.auth.auth_client import get_auth_client
 from clients.auth.auth_schema import LoginRequestSchema
 
 
-class AuthUserSchema(BaseModel):
+class AuthUserSchema(BaseModel, frozen=True): # делаем модель неизменяемой
     """
     Описание модели запроса авторизации
     """
     email: str
     password: str
 
+@lru_cache(maxsize=None) # кэшируем функцию
 def get_private_client(user: AuthUserSchema) -> Client:
     """
     Функция создает экземпляр httpx.Client с базовыми настройками

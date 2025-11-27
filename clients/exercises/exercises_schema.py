@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field, ConfigDict
+
 from tools.data_generator import fake
 
 
@@ -70,7 +71,7 @@ class GetExerciseResponseSchema(BaseModel):
     """
     exercises: ExerciseSchema
 
-class CreateExercisesResponseSchema(BaseModel):
+class CreateExerciseResponseSchema(BaseModel):
     """
     Описание модели ответа на создание упражнения
     """

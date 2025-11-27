@@ -1,7 +1,8 @@
-from clients.base_client import BaseClient
 from httpx import Response
+
+from clients.base_client import BaseClient
 from clients.exercises.exercises_schema import GetExercisesRequestSchema, GetExercisesResponseSchema, \
-    CreateExerciseRequestSchema, CreateExercisesResponseSchema, UpdateExerciseRequestSchema, \
+    CreateExerciseRequestSchema, CreateExerciseResponseSchema, UpdateExerciseRequestSchema, \
     UpdateExercisesResponseSchema
 from clients.private_builder import AuthUserSchema, get_private_client
 
@@ -45,9 +46,9 @@ class ExercisesClient(BaseClient):
         """
         return self.post("/api/v1/exercises", json=request_body.model_dump(by_alias=True))
 
-    def create_exercise(self, request_body: CreateExerciseRequestSchema) -> CreateExercisesResponseSchema:
+    def create_exercise(self, request_body: CreateExerciseRequestSchema) -> CreateExerciseResponseSchema:
         response = self.create_exercise_api(request_body)
-        return CreateExercisesResponseSchema.model_validate_json(response.text)
+        return CreateExerciseResponseSchema.model_validate_json(response.text)
 
     def update_exercise_api(self, exercise_id: GetExercisesRequestSchema, request_body: UpdateExerciseRequestSchema) -> Response:
         """

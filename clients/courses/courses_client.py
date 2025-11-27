@@ -1,5 +1,6 @@
-from clients.base_client import BaseClient
 from httpx import Response
+
+from clients.base_client import BaseClient
 from clients.courses.courses_schema import GetCourseByUserRequestSchema, CreateCourseRequestSchema, \
     CreateCourseResponseSchema, UpdateCourseRequestSchema
 from clients.private_builder import AuthUserSchema, get_private_client

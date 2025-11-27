@@ -1,5 +1,4 @@
 from pydantic import BaseModel, HttpUrl, Field
-from tools.data_generator import fake
 
 
 class CreateFileRequestSchema(BaseModel):

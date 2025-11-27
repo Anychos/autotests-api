@@ -1,12 +1,10 @@
 from clients.courses.courses_client import get_private_courses_client
 from clients.courses.courses_schema import CreateCourseRequestSchema
-from clients.exercises.exercises_client import get_private_exercises_client
-from clients.exercises.exercises_schema import CreateExerciseRequestSchema
 from clients.files.files_client import get_private_files_client
 from clients.files.files_schema import CreateFileRequestSchema
 from clients.private_builder import AuthUserSchema
-from clients.users.public_user_client import get_public_user_client
 from clients.users.users_schema import CreateUserRequestSchema
+from clients.users.public_user_client import get_public_user_client
 
 
 public_user_client = get_public_user_client()
@@ -23,7 +21,7 @@ files_client  = get_private_files_client(auth_user_dict)
 courses_client = get_private_courses_client(auth_user_dict)
 
 create_file_request = CreateFileRequestSchema(
-    upload_file='./test_data/image.png'
+    upload_file='../test_data/image.png'
 )
 create_file_response = files_client.create_file(create_file_request)
 print(create_file_response)
@@ -34,11 +32,3 @@ create_course_request = CreateCourseRequestSchema(
 )
 create_course_response = courses_client.create_course(create_course_request)
 print(create_course_response)
-
-exercises_client = get_private_exercises_client(auth_user_dict)
-create_exercise_request = CreateExerciseRequestSchema(
-    course_id=create_course_response.course.id
-)
-create_exercise_response = exercises_client.create_exercise(create_exercise_request)
-print(create_exercise_response)
-

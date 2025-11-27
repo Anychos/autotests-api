@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field, EmailStr, constr, ConfigDict
+
 from tools.data_generator import fake
 
 

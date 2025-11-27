@@ -1,4 +1,5 @@
 from httpx import Response
+
 from clients.base_client import BaseClient
 from clients.private_builder import get_private_client, AuthUserSchema
 from clients.users.users_schema import UpdateUserRequestSchema, GetUserResponseSchema
