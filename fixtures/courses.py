@@ -13,6 +13,9 @@ class CoursesFixture(BaseModel):
 
 @pytest.fixture
 def courses_client(function_create_user: UserFixture) -> CoursesClient:
+    """
+    Фикстура возвращает готовый клиент для работы с методами курсов
+    """
     return get_private_courses_client(function_create_user.auth_user)
 
 @pytest.fixture
@@ -20,6 +23,15 @@ def function_create_course(
         courses_client: CoursesClient,
         function_create_user: UserFixture,
         function_create_file: FileFixture) -> CoursesFixture:
+    """
+    Фикстура для создания курса
+    Она формирует запрос на создание курса и возвращает объект, содержащий сам запрос и ответ сервера
+
+    :param courses_client: Клиент для взаимодействия с API курсов
+    :param function_create_user: Фикстура для создания пользователя
+    :param function_create_file: Фикстура для создания файла
+    :return: Объект фикстуры CoursesFixture, содержащий данные запроса и ответа
+    """
     request = CreateCourseRequestSchema()
     response = courses_client.create_course(request)
     return CoursesFixture(request=request, response=response)

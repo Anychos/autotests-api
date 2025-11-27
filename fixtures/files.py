@@ -12,10 +12,20 @@ class FileFixture(BaseModel):
 
 @pytest.fixture
 def files_client(function_create_user: UserFixture) -> FilesClient:
+    """
+    Фикстура возвращает готовый клиент для работы с методами файлов
+    """
     return get_private_files_client(function_create_user.auth_user)
 
 @pytest.fixture
 def function_create_file(files_client: FilesClient) -> FileFixture:
+    """
+    Фикстура для создания файла
+    Она формирует запрос на создание файла и возвращает объект, содержащий сам запрос и ответ сервера
+
+    :param files_client: Клиент для взаимодействия с API файлов
+    :return: Объект фикстуры FileFixture, содержащий данные запроса и ответа
+    """
     request = CreateFileRequestSchema(upload_file='./test_data/image.png')
     response = files_client.create_file(request)
     return FileFixture(request=request, response=response)

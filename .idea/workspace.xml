@@ -4,38 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35dcc119-d232-4ca4-bf9e-df26db2ff1e6" name="Changes" comment="Параметризация Pytest: Практика работы с pytest параметризацией">
-      <change afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fixtures/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fixtures/auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fixtures/courses.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fixtures/exercises.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fixtures/files.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fixtures/users.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lessons/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pytest.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/auth/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/users/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_client_create_course.py" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/api_client_create_course.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_client_create_exercise.py" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/api_client_create_exercise.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_client_get_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/api_client_get_user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/auth/auth_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/auth/auth_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/auth/auth_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/auth/auth_schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/courses/courses_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/courses/courses_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/courses/courses_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/courses/courses_schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/exercises/exercises_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/exercises/exercises_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/exercises/exercises_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/exercises/exercises_schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/files/files_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/files/files_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/files/files_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/files/files_schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/private_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/private_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/users/private_user_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/users/private_user_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/users/public_user_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/users/public_user_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/users/users_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/users/users_schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pydantic_json_schema_get_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/pydantic_json_schema_get_user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/conftest.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_authentication.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/auth/test_authentication.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_users.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/users/test_users.py" afterDir="false" />
+    <list default="true" id="35dcc119-d232-4ca4-bf9e-df26db2ff1e6" name="Changes" comment=" Рефакторинг и подготовка к написанию API автотестов: Практика реализации фикстур">
+      <change beforePath="$PROJECT_DIR$/fixtures/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixtures/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixtures/courses.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixtures/courses.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixtures/exercises.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixtures/exercises.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixtures/files.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixtures/files.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixtures/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixtures/users.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +243,7 @@
       <workItem from="1764132035204" duration="2128000" />
       <workItem from="1764136546864" duration="4000" />
       <workItem from="1764208756408" duration="3890000" />
-      <workItem from="1764219382598" duration="915000" />
+      <workItem from="1764219382598" duration="1498000" />
     </task>
     <task id="LOCAL-00001" summary="Практика написания Pydantic-моделей">
       <option name="closed" value="true" />
@@ -327,7 +301,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764117544888</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary=" Рефакторинг и подготовка к написанию API автотестов: Практика реализации фикстур">
+      <option name="closed" value="true" />
+      <created>1764220327367</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1764220327367</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,7 +323,8 @@
     <MESSAGE value="Практика работы с pytest маркировками" />
     <MESSAGE value="Практика написания автотестов с использованием фикстур" />
     <MESSAGE value="Параметризация Pytest: Практика работы с pytest параметризацией" />
-    <option name="LAST_COMMIT_MESSAGE" value="Параметризация Pytest: Практика работы с pytest параметризацией" />
+    <MESSAGE value=" Рефакторинг и подготовка к написанию API автотестов: Практика реализации фикстур" />
+    <option name="LAST_COMMIT_MESSAGE" value=" Рефакторинг и подготовка к написанию API автотестов: Практика реализации фикстур" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/autotests_api$api_client_create_exercise.coverage" NAME="api_client_create_exercise Coverage Results" MODIFIED="1763873774867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
