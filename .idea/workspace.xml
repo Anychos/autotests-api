@@ -5,11 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35dcc119-d232-4ca4-bf9e-df26db2ff1e6" name="Changes" comment=" Рефакторинг и подготовка к написанию API автотестов: Практика реализации фикстур">
-      <change beforePath="$PROJECT_DIR$/fixtures/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixtures/auth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/clients/error_schema.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/files/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/files/test_files.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/assertions/errors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/assertions/files.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/assertions/schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/files/files_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/files/files_schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/private_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/private_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/public_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/public_builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fixtures/courses.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixtures/courses.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fixtures/exercises.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixtures/exercises.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fixtures/files.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixtures/files.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fixtures/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixtures/users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pytest.ini" beforeDir="false" afterPath="$PROJECT_DIR$/pytest.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/auth/test_authentication.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/auth/test_authentication.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/users/test_users.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/users/test_users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/assertions/auth_assertions.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/assertions/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/assertions/users_assertions.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/assertions/users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/base_assertions.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/base_assertions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/data_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/data_generator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +68,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python tests.Python tests for test_authentication.TestAuthentication.test_login.executor": "Run",
     "Python tests.Python tests for test_authentication.test_login.executor": "Run",
+    "Python tests.Python tests for test_files.TestFilesNegative.test_create_file_without_filename.executor": "Run",
+    "Python tests.Python tests for test_files.TestFilesNegative.test_delete_file.executor": "Run",
+    "Python tests.Python tests for test_files.TestFilesPositive.test_create_file.executor": "Run",
+    "Python tests.Python tests for test_users.TestUser.test_create_user.executor": "Run",
     "Python tests.Python tests for test_users.test_create_user.executor": "Run",
     "Python tests.Python tests for test_users.test_get_user_me.executor": "Run",
     "Python.api_client_create_course.executor": "Run",
@@ -62,6 +83,7 @@
     "Python.api_client_get_user (1).executor": "Run",
     "Python.client.executor": "Run",
     "Python.course_schema.executor": "Run",
+    "Python.data_generator.executor": "Run",
     "Python.example_1.executor": "Run",
     "Python.exercises_client.executor": "Run",
     "Python.faker.executor": "Run",
@@ -74,7 +96,7 @@
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "com.codeium.enabled": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/anton/PycharmProjects/autotests-api",
+    "last_opened_file_path": "C:/Users/anton/PycharmProjects/restfull_booker_api",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -93,8 +115,8 @@
       <recent name="C:\Users\anton\PycharmProjects\autotests-api\tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for tests.auth.test_authentication.test_login">
-    <configuration name="api_client_create_course" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Python tests for test_files.TestFilesNegative.test_delete_file">
+    <configuration name="data_generator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="autotests-api" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -103,12 +125,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tools" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\anton\PycharmProjects\autotests-api\lessons\api_client_create_course.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/data_generator.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -117,84 +139,77 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="api_client_create_exercise" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="autotests-api" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\anton\PycharmProjects\autotests-api\lessons\api_client_create_exercise.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for tests.auth.test_authentication.test_login" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_authentication.TestAuthentication.test_login" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="autotests-api" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/auth" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.auth.test_authentication.test_login&quot;" />
+      <option name="_new_target" value="&quot;test_authentication.TestAuthentication.test_login&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for tests.users.test_users.test_create_user" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_files.TestFilesNegative.test_delete_file" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="autotests-api" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/files" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.users.test_users.test_create_user&quot;" />
+      <option name="_new_target" value="&quot;test_files.TestFilesNegative.test_delete_file&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for tests.users.test_users.test_get_user_me" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_files.TestFilesPositive.test_create_file" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="autotests-api" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/files" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.users.test_users.test_get_user_me&quot;" />
+      <option name="_new_target" value="&quot;test_files.TestFilesPositive.test_create_file&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_users.TestUser.test_create_user" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="autotests-api" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/users" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_users.TestUser.test_create_user&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for tests.auth.test_authentication.test_login" />
-        <item itemvalue="Python tests.Python tests for tests.users.test_users.test_get_user_me" />
-        <item itemvalue="Python tests.Python tests for tests.users.test_users.test_create_user" />
-        <item itemvalue="Python.api_client_create_course" />
-        <item itemvalue="Python.api_client_create_exercise" />
+        <item itemvalue="Python tests.Python tests for test_files.TestFilesNegative.test_delete_file" />
+        <item itemvalue="Python tests.Python tests for test_files.TestFilesPositive.test_create_file" />
+        <item itemvalue="Python tests.Python tests for test_authentication.TestAuthentication.test_login" />
+        <item itemvalue="Python tests.Python tests for test_users.TestUser.test_create_user" />
+        <item itemvalue="Python.data_generator" />
       </list>
     </recent_temporary>
   </component>
@@ -243,7 +258,21 @@
       <workItem from="1764132035204" duration="2128000" />
       <workItem from="1764136546864" duration="4000" />
       <workItem from="1764208756408" duration="3890000" />
-      <workItem from="1764219382598" duration="1498000" />
+      <workItem from="1764219382598" duration="2948000" />
+      <workItem from="1764304821551" duration="4262000" />
+      <workItem from="1764466053464" duration="490000" />
+      <workItem from="1764466562841" duration="2562000" />
+      <workItem from="1764475651897" duration="8352000" />
+      <workItem from="1764494361887" duration="248000" />
+      <workItem from="1764550077452" duration="1512000" />
+      <workItem from="1764556409176" duration="605000" />
+      <workItem from="1764564034957" duration="604000" />
+      <workItem from="1764566577711" duration="295000" />
+      <workItem from="1764641982838" duration="614000" />
+      <workItem from="1764647614603" duration="1201000" />
+      <workItem from="1764653696352" duration="2000" />
+      <workItem from="1764656773449" duration="20000" />
+      <workItem from="1764730363002" duration="11783000" />
     </task>
     <task id="LOCAL-00001" summary="Практика написания Pydantic-моделей">
       <option name="closed" value="true" />
@@ -309,7 +338,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764220327367</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary=" Рефакторинг и подготовка к написанию API автотестов: Практика реализации фикстур">
+      <option name="closed" value="true" />
+      <created>1764220889963</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1764220889963</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,12 +370,13 @@
     <SUITE FILE_PATH="coverage/autotests_api$course_schema.coverage" NAME="course_schema Coverage Results" MODIFIED="1763701488742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/clients/courses" />
     <SUITE FILE_PATH="coverage/autotests_api$test_create_exercise.coverage" NAME="test_create_exercise Coverage Results" MODIFIED="1763605228911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/autotests_api$test.coverage" NAME="test Coverage Results" MODIFIED="1763517762962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/autotests_api$data_generator.coverage" NAME="data_generator Coverage Results" MODIFIED="1764482912955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/autotests_api$api_client_create_course.coverage" NAME="api_client_create_course Coverage Results" MODIFIED="1763873796249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/autotests_api$api_client_create_exercise__1_.coverage" NAME="api_client_create_exercise (1) Coverage Results" MODIFIED="1763786604614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/autotests_api$json_schema.coverage" NAME="json_schema Coverage Results" MODIFIED="1763794468188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/clients/users" />
     <SUITE FILE_PATH="coverage/autotests_api$api_client_get_user__1_.coverage" NAME="api_client_get_user (1) Coverage Results" MODIFIED="1763873071100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/autotests_api$exercises_client.coverage" NAME="exercises_client Coverage Results" MODIFIED="1763517585919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/clients/exercises" />
-    <SUITE FILE_PATH="coverage/autotests_api$.coverage" NAME=" Coverage Results" MODIFIED="1764210098207" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/autotests_api$.coverage" NAME=" Coverage Results" MODIFIED="1764900135537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/files" />
     <SUITE FILE_PATH="coverage/autotests_api$test_data_generator.coverage" NAME="test_data_generator Coverage Results" MODIFIED="1763872940501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/autotests_api$client.coverage" NAME="client Coverage Results" MODIFIED="1763431849641" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
     <SUITE FILE_PATH="coverage/autotests_api$api_client_create_user.coverage" NAME="api_client_create_user Coverage Results" MODIFIED="1763862778167" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

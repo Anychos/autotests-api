@@ -7,7 +7,8 @@ def assert_login_response(response: LoginResponseSchema):
     """
     Функция для проверки ответа на запрос авторизации
 
-    :param response: Тело ответа в формате json
+    :param response: Схема ответа сервера на запрос авторизации
+    :raises AssertionError: Если хотя бы одно поле не совпадает
     """
     assert_value(response.token.token_type, "bearer", "token_type")
     assert_is_true(response.token.access_token, "access_token")

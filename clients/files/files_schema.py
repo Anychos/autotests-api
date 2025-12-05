@@ -7,7 +7,7 @@ class CreateFileRequestSchema(BaseModel):
     """
     filename: str = Field(default='image.png')
     directory: str = Field(default='courses')
-    upload_file: str
+    upload_file: str = Field(default='./test_data/image.png')
 
 class FileSchema(BaseModel):
     """
@@ -21,5 +21,11 @@ class FileSchema(BaseModel):
 class CreateFileResponseSchema(BaseModel):
     """
     Описание модели ответа на запрос загрузки файла
+    """
+    file: FileSchema
+
+class GetFileResponseSchema(BaseModel):
+    """
+    Описание модели ответа на запрос получения файла
     """
     file: FileSchema

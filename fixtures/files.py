@@ -7,6 +7,9 @@ from fixtures.users import UserFixture
 
 
 class FileFixture(BaseModel):
+    """
+    Модель для хранения данных запроса и ответа метода создания файла
+    """
     request: CreateFileRequestSchema
     response: CreateFileResponseSchema
 

@@ -9,5 +9,5 @@ def get_public_client() -> Client:
     """
     return Client(
         timeout=10,
-        base_url="http://localhost:8000"
+        base_url="http://localhost:8001"
     )

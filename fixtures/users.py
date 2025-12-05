@@ -7,8 +7,10 @@ from clients.users.public_user_client import get_public_user_client, PublicUserC
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema
 
 
-# Модель для агрегации возвращаемых данных фикстурой function_user
 class UserFixture(BaseModel):
+    """
+    Модель для хранения данных запроса и ответа метода создания пользователя
+    """
     request: CreateUserRequestSchema
     response: CreateUserResponseSchema
 
@@ -45,7 +47,7 @@ def private_user_client(function_create_user) -> PrivateUserClient:
 @pytest.fixture
 def function_create_user(public_user_client: PublicUserClient) -> UserFixture:
     """
-    Фикстура для создания упражнения
+    Фикстура для создания пользователя
     Она формирует запрос на создание пользователя и возвращает объект, содержащий сам запрос и ответ сервера
 
     :param public_user_client: Клиент для взаимодействия с публичным API пользователей
@@ -53,4 +55,4 @@ def function_create_user(public_user_client: PublicUserClient) -> UserFixture:
     """
     request = CreateUserRequestSchema()
     response = public_user_client.create_user(request)
-    return UserFixture(request=request, response=response)  # Возвращаем все нужные данные
+    return UserFixture(request=request, response=response)

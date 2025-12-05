@@ -8,6 +8,9 @@ from fixtures.users import UserFixture
 
 
 class CoursesFixture(BaseModel):
+    """
+    Модель для хранения данных запроса и ответа метода создания курса
+    """
     request: CreateCourseRequestSchema
     response: CreateCourseResponseSchema
 

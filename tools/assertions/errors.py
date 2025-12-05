@@ -1,0 +1,47 @@
+from clients.error_schema import ValidationErrorSchema, ValidationErrorResponseSchema, InternalErrorResponseSchema
+from tools.base_assertions import assert_value, assert_length
+
+
+def assert_validation_error(actual: ValidationErrorSchema, expected: ValidationErrorSchema):
+    """
+    Проверяет, что объект ошибки валидации соответствует ожидаемому значению.
+
+    :param actual: Фактическая ошибка.
+    :param expected: Ожидаемая ошибка.
+    :raises AssertionError: Если значения полей не совпадают.
+    """
+    assert_value(actual.type, expected.type, "type")
+    assert_value(actual.input, expected.input, "input")
+    assert_value(actual.context, expected.context, "context")
+    assert_value(actual.message, expected.message, "message")
+    assert_value(actual.location, expected.location, "location")
+
+def assert_validation_error_response(
+        actual: ValidationErrorResponseSchema,
+        expected: ValidationErrorResponseSchema
+):
+    """
+    Проверяет, что объект ответа API с ошибками валидации (`ValidationErrorResponseSchema`)
+    соответствует ожидаемому значению.
+
+    :param actual: Фактический ответ API.
+    :param expected: Ожидаемый ответ API.
+    :raises AssertionError: Если значения полей не совпадают.
+    """
+    assert_length(actual.details, expected.details, "details")
+
+    for index, detail in enumerate(expected.details): # цикл сравнивает ожидаемые и актуальные ошибки в ValidationErrorResponseSchema
+        assert_validation_error(actual.details[index], detail)
+
+def assert_internal_error_response(
+        actual: InternalErrorResponseSchema,
+        expected: InternalErrorResponseSchema
+):
+    """
+    Функция для проверки внутренней ошибки. Например, ошибки 404 (File not found).
+
+    :param actual: Фактический ответ API.
+    :param expected: Ожидаемый ответ API.
+    :raises AssertionError: Если значения полей не совпадают.
+    """
+    assert_value(actual.details, expected.details, "details")
