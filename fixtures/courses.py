@@ -35,6 +35,9 @@ def function_create_course(
     :param function_create_file: Фикстура для создания файла
     :return: Объект фикстуры CoursesFixture, содержащий данные запроса и ответа
     """
-    request = CreateCourseRequestSchema()
+    request = CreateCourseRequestSchema(
+        preview_file_id=function_create_file.response.file.id,
+        created_by_user_id=function_create_user.response.user.id
+    )
     response = courses_client.create_course(request)
     return CoursesFixture(request=request, response=response)

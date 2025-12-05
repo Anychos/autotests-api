@@ -1,7 +1,7 @@
 from httpx import Response
 
 from clients.base_client import BaseClient
-from clients.courses.courses_schema import GetCourseByUserRequestSchema, CreateCourseRequestSchema, \
+from clients.courses.courses_schema import GetCoursesQuerySchema, CreateCourseRequestSchema, \
     CreateCourseResponseSchema, UpdateCourseRequestSchema
 from clients.private_builder import AuthUserSchema, get_private_client
 
@@ -10,7 +10,7 @@ class CoursesClient(BaseClient):
     """
     Клиент для работы с курсами
     """
-    def get_course_by_user_api(self, query: GetCourseByUserRequestSchema) -> Response:
+    def get_courses_api(self, query: GetCoursesQuerySchema) -> Response:
         """
         Получение информации о курсе по id пользователя
 
@@ -19,7 +19,7 @@ class CoursesClient(BaseClient):
         """
         return self.get('/api/v1/courses', params=query.model_dump(by_alias=True))
 
-    def get_course_by_id_api(self, course_id: str) -> Response:
+    def get_course_api(self, course_id: str) -> Response:
         """
         Получение информации о курсе по его id
 

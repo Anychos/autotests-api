@@ -20,7 +20,7 @@ class CourseSchema(BaseModel):
     estimated_time: str = Field(default=None, alias='estimatedTime')
     created_by_user: UserSchema = Field(alias='createdByUser')
 
-class GetCourseByUserRequestSchema(BaseModel):
+class GetCoursesQuerySchema(BaseModel):
     """
     Описание модели запроса на получение курсов пользователя
     """
