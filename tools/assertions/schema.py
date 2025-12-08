@@ -1,5 +1,4 @@
 from typing import Any
-
 from jsonschema import validate
 from jsonschema.validators import Draft202012Validator
 

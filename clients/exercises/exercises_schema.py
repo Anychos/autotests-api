@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field, ConfigDict
 from tools.data_generator import fake
 
 
-class GetExercisesRequestSchema(BaseModel):
+class GetExercisesQuerySchema(BaseModel):
     """
     Описание модели запроса на получение упражнений курса
     """
@@ -11,7 +11,19 @@ class GetExercisesRequestSchema(BaseModel):
 
     course_id: str = Field(alias='courseId')
 
-class GetExerciseRequestSchema(BaseModel):
+class GetExerciseQuerySchema(BaseModel):
+    """
+    Описание модели запроса на получение упражнения по его id
+    """
+    exercise_id: str
+
+class DeleteExerciseQuerySchema(BaseModel):
+    """
+    Описание модели запроса на получение упражнения по его id
+    """
+    exercise_id: str
+
+class UpdateExerciseQuerySchema(BaseModel):
     """
     Описание модели запроса на получение упражнения по его id
     """
@@ -69,7 +81,7 @@ class GetExerciseResponseSchema(BaseModel):
     """
     Описание модели ответа на получение упражнения
     """
-    exercises: ExerciseSchema
+    exercise: ExerciseSchema
 
 class CreateExerciseResponseSchema(BaseModel):
     """
@@ -77,8 +89,8 @@ class CreateExerciseResponseSchema(BaseModel):
     """
     exercise: ExerciseSchema
 
-class UpdateExercisesResponseSchema(BaseModel):
+class UpdateExerciseResponseSchema(BaseModel):
     """
     Описание модели ответа на обновление упражнения
     """
-    exercise: list[ExerciseSchema]
+    exercise: ExerciseSchema
