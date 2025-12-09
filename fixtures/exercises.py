@@ -1,7 +1,7 @@
 import pytest
 from pydantic import BaseModel
 
-from clients.exercises.exercises_client import ExercisesClient, get_private_exercises_client
+from clients.exercises.exercises_client import ExercisesAPIClient, get_private_exercises_client
 from clients.exercises.exercises_schema import CreateExerciseRequestSchema, CreateExerciseResponseSchema
 from fixtures.courses import CoursesFixture
 from fixtures.users import UserFixture
@@ -15,14 +15,14 @@ class ExercisesFixture(BaseModel):
     response: CreateExerciseResponseSchema
 
 @pytest.fixture
-def exercises_client(function_create_user: UserFixture) -> ExercisesClient:
+def exercises_client(function_create_user: UserFixture) -> ExercisesAPIClient:
     """
     Фикстура возвращает готовый клиент для работы с методами упражнений
     """
     return get_private_exercises_client(function_create_user.auth_user)
 
 @pytest.fixture
-def function_create_exercise(exercises_client: ExercisesClient,
+def function_create_exercise(exercises_client: ExercisesAPIClient,
                              function_create_course: CoursesFixture) -> ExercisesFixture:
     """
     Фикстура для создания упражнения

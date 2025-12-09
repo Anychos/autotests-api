@@ -1,10 +1,10 @@
 import pytest
 
-from clients.auth.auth_client import AuthClient, get_auth_client
+from clients.auth.auth_client import AuthAPIClient, get_auth_client
 
 
 @pytest.fixture
-def auth_client() -> AuthClient:
+def auth_client() -> AuthAPIClient:
     """
     Фикстура возвращает готовый клиент для работы с методами авторизации
     """

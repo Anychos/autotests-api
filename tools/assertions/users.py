@@ -1,8 +1,15 @@
-from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, GetUserResponseSchema, \
-    UserSchema
+import allure
+
+from clients.users.users_schema import (
+    CreateUserRequestSchema,
+    CreateUserResponseSchema,
+    GetUserResponseSchema,
+    UserSchema,
+)
 from tools.base_assertions import assert_value
 
 
+@allure.step("Проверка ответа на запрос создания пользователя")
 def assert_create_user_response(request: CreateUserRequestSchema, response: CreateUserResponseSchema):
     """
     Проверяет, что ответ на создание пользователя соответствует запросу.
@@ -16,6 +23,7 @@ def assert_create_user_response(request: CreateUserRequestSchema, response: Crea
     assert_value(response.user.first_name, request.first_name, "first_name")
     assert_value(response.user.middle_name, request.middle_name, "middle_name")
 
+@allure.step("Проверка пользователя")
 def assert_user(actual: UserSchema, expected: UserSchema):
     """
     Проверяет, что ответ на получение пользователя соответствует ответу на создание пользователя.
@@ -29,5 +37,6 @@ def assert_user(actual: UserSchema, expected: UserSchema):
     assert_value(expected.first_name, actual.first_name, "first_name")
     assert_value(expected.middle_name, actual.middle_name, "middle_name")
 
+@allure.step("Проверка ответа на запрос пользователя")
 def assert_get_user_response(create_user_response: CreateUserResponseSchema, get_user_response: GetUserResponseSchema):
     assert_user(create_user_response.user, get_user_response.user)

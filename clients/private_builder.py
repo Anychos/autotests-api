@@ -1,6 +1,7 @@
+from functools import lru_cache  # модуль для кэширования
+
 from httpx import Client
 from pydantic import BaseModel
-from functools import lru_cache # модуль для кэширования
 
 from clients.auth.auth_client import get_auth_client
 from clients.auth.auth_schema import LoginRequestSchema

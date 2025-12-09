@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 from clients.files.files_schema import FileSchema
 from clients.users.users_schema import UserSchema

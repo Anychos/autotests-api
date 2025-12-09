@@ -1,22 +1,23 @@
-import pytest
-import allure
 from http import HTTPStatus
 
-from tools.allure.tags import AllureTags
-from clients.users.private_user_client import PrivateUserClient
-from clients.users.public_user_client import PublicUserClient
+import allure
+import pytest
+
+from clients.users.private_user_client import PrivateUserAPIClient
+from clients.users.public_user_client import PublicUserAPIClient
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, GetUserResponseSchema
 from fixtures.users import UserFixture
+from tools.allure.epics import AllureEpic
+from tools.allure.features import AllureFeature
+from tools.allure.parent_suite import AllureParentSuite
+from tools.allure.stories import AllureStory
+from tools.allure.sub_suite import AllureSubSuite
+from tools.allure.suite import AllureSuite
+from tools.allure.tags import AllureTags
 from tools.assertions.schema import validate_json_schema
 from tools.assertions.users import assert_get_user_response
 from tools.base_assertions import assert_status_code, assert_value
 from tools.data_generator import fake
-from tools.allure.epics import AllureEpic
-from tools.allure.stories import AllureStory
-from tools.allure.features import AllureFeature
-from tools.allure.parent_suite import AllureParentSuite
-from tools.allure.sub_suite import AllureSubSuite
-from tools.allure.suite import AllureSuite
 
 
 @pytest.mark.regression
@@ -33,7 +34,7 @@ class TestUser:
     @allure.story(AllureStory.CREATE_ENTITY)
     @allure.sub_suite(AllureSubSuite.CREATE_ENTITY)
     @allure.title("Создание нового пользователя")
-    def test_create_user(self, email: str, public_user_client: PublicUserClient):
+    def test_create_user(self, email: str, public_user_client: PublicUserAPIClient):
         allure.dynamic.title(f"Email пользователя: {email}") # создание динамического наименования для теста
         request = CreateUserRequestSchema(email=fake.email(email))
 
@@ -48,7 +49,7 @@ class TestUser:
     @allure.story(AllureStory.GET_ENTITY)
     @allure.sub_suite(AllureSubSuite.GET_ENTITY)
     @allure.title("Получение данных текущего пользователя")
-    def test_get_user_me(self, function_create_user: UserFixture, private_user_client: PrivateUserClient):
+    def test_get_user_me(self, function_create_user: UserFixture, private_user_client: PrivateUserAPIClient):
         response = private_user_client.get_user_me_api()
 
         response_data = GetUserResponseSchema.model_validate_json(response.text)

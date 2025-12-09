@@ -1,6 +1,9 @@
 from typing import Any, Sized
 
+import allure
 
+
+@allure.step("Проверка соответствия статус кода ответа. Ожидается {expected}, получен {actual}")
 def assert_status_code(actual: int, expected: int):
     """
     Функция для проверки статус кода
@@ -12,6 +15,7 @@ def assert_status_code(actual: int, expected: int):
         f'Некорректный код ответа. Получен: {actual}, ожидался: {expected}'
     )
 
+@allure.step("Проверка соответствия значения в поле {field_name}. Ожидается {expected}, получен {actual}")
 def assert_value(actual: Any, expected: Any, field_name: str):
     """
     Функция для проверки значения поле ответа
@@ -24,6 +28,7 @@ def assert_value(actual: Any, expected: Any, field_name: str):
         f'Некорректное значение в поле {field_name}. Получено: {actual}, ожидалось: {expected}'
     )
 
+@allure.step("Проверка наличия поля {field_name} в ответе")
 def assert_is_true(actual: Any, field_name: str):
     """
     Проверяет, что фактическое значение является истинным.
@@ -46,8 +51,9 @@ def assert_length(actual: Sized, expected: Sized, name: str):
     :param expected: Ожидаемый объект.
     :raises AssertionError: Если длины не совпадают.
     """
-    assert len(actual) == len(expected), (
-        f'Incorrect object length: "{name}". '
-        f'Expected length: {len(expected)}. '
-        f'Actual length: {len(actual)}'
-    )
+    with allure.step("Проверка длины {name}. Ожидается {len(expected)}, фактически {len(actual)}"):
+        assert len(actual) == len(expected), (
+            f'Incorrect object length: "{name}". '
+            f'Expected length: {len(expected)}. '
+            f'Actual length: {len(actual)}'
+        )

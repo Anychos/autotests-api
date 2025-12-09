@@ -1,14 +1,16 @@
+import allure
 from httpx import Response
 
-from clients.base_client import BaseClient
+from clients.base_client import BaseAPIClient
 from clients.public_builder import get_public_client
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema
 
 
-class PublicUserClient(BaseClient):
+class PublicUserAPIClient(BaseAPIClient):
     """
     Клиент для работы с публичными методами пользователя
     """
+    @allure.step("Создание пользователя")
     def create_user_api(self, request_body: CreateUserRequestSchema) -> Response:
         """
         Выполняет POST запрос для создания пользователя
@@ -18,14 +20,16 @@ class PublicUserClient(BaseClient):
         """
         return self.post('/api/v1/users', json=request_body.model_dump(by_alias=True))
 
+    @allure.step("Создание пользователя и валидация ответа по схеме")
     def create_user(self, request_body: CreateUserRequestSchema) -> CreateUserResponseSchema:
         response = self.create_user_api(request_body)
         return CreateUserResponseSchema.model_validate_json(response.text)
 
-def get_public_user_client() -> PublicUserClient:
+@allure.step("Получение клиента для работы с публичным API")
+def get_public_user_client() -> PublicUserAPIClient:
     """
     Функция получения клиента для работы с публичными методами
 
     :return: Готовый к использованию Client
     """
-    return PublicUserClient(client=get_public_client())
+    return PublicUserAPIClient(client=get_public_client())

@@ -1,14 +1,16 @@
+import allure
 from httpx import Response
 
-from clients.base_client import BaseClient
-from clients.private_builder import get_private_client, AuthUserSchema
-from clients.users.users_schema import UpdateUserRequestSchema, GetUserResponseSchema
+from clients.base_client import BaseAPIClient
+from clients.private_builder import AuthUserSchema, get_private_client
+from clients.users.users_schema import GetUserResponseSchema, UpdateUserRequestSchema
 
 
-class PrivateUserClient(BaseClient):
+class PrivateUserAPIClient(BaseAPIClient):
     """
     Клиент для работы с методами авторизованного пользователя
     """
+    @allure.step("Получение текущего пользователя")
     def get_user_me_api(self) -> Response:
         """
         Получение информации о текущем пользователе
@@ -17,6 +19,7 @@ class PrivateUserClient(BaseClient):
         """
         return self.get('/api/v1/users/me')
 
+    @allure.step("Получение пользователя по id: {user_id}")
     def get_user_by_id_api(self, user_id: str) -> Response:
         """
         Получение информации о пользователе по id
@@ -26,6 +29,7 @@ class PrivateUserClient(BaseClient):
         """
         return self.get(f'/api/v1/users/{user_id}')
 
+    @allure.step("Получение пользователя по id: {user_id} и валидация ответа по схеме")
     def get_user_by_id(self, user_id: str) -> GetUserResponseSchema:
         """
         Функция для получения сущности пользователя
@@ -36,6 +40,7 @@ class PrivateUserClient(BaseClient):
         response = self.get_user_by_id_api(user_id)
         return GetUserResponseSchema.model_validate_json(response.text)
 
+    @allure.step("Обновление пользователя с id: {user_id}")
     def update_user_api(self, user_id: str, request_body: UpdateUserRequestSchema) -> Response:
         """
         Обновление информации о пользователе
@@ -46,6 +51,7 @@ class PrivateUserClient(BaseClient):
         """
         return self.patch(f'/api/v1/users/{user_id}', json=request_body.model_dump(by_alias=True))
 
+    @allure.step("Удаление пользователя с id: {user_id}")
     def delete_user_api(self, user_id: str) -> Response:
         """
         Удаление пользователя по id
@@ -55,10 +61,11 @@ class PrivateUserClient(BaseClient):
         """
         return self.delete(f'/api/v1/users/{user_id}')
 
-def get_private_user_client(user: AuthUserSchema) -> PrivateUserClient:
+@allure.step("Получение клиента для работы с приватным API")
+def get_private_user_client(user: AuthUserSchema) -> PrivateUserAPIClient:
     """
     Функция получения клиента для работы с приватными методами
 
     :return: Готовый к использованию Client
     """
-    return PrivateUserClient(client=get_private_client(user))
+    return PrivateUserAPIClient(client=get_private_client(user))

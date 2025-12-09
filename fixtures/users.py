@@ -2,8 +2,8 @@ import pytest
 from pydantic import BaseModel, EmailStr
 
 from clients.private_builder import AuthUserSchema
-from clients.users.private_user_client import PrivateUserClient, get_private_user_client
-from clients.users.public_user_client import get_public_user_client, PublicUserClient
+from clients.users.private_user_client import PrivateUserAPIClient, get_private_user_client
+from clients.users.public_user_client import PublicUserAPIClient, get_public_user_client
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema
 
 
@@ -31,21 +31,21 @@ class UserFixture(BaseModel):
         return schema
 
 @pytest.fixture
-def public_user_client() -> PublicUserClient:
+def public_user_client() -> PublicUserAPIClient:
     """
     Фикстура возвращает готовый клиент для работы с публичными методами пользователей
     """
     return get_public_user_client()
 
 @pytest.fixture
-def private_user_client(function_create_user) -> PrivateUserClient:
+def private_user_client(function_create_user) -> PrivateUserAPIClient:
     """
     Фикстура возвращает готовый клиент для работы с приватными методами пользователей
     """
     return get_private_user_client(function_create_user.auth_user)
 
 @pytest.fixture
-def function_create_user(public_user_client: PublicUserClient) -> UserFixture:
+def function_create_user(public_user_client: PublicUserAPIClient) -> UserFixture:
     """
     Фикстура для создания пользователя
     Она формирует запрос на создание пользователя и возвращает объект, содержащий сам запрос и ответ сервера

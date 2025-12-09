@@ -1,10 +1,19 @@
-from clients.courses.courses_schema import UpdateCourseRequestSchema, UpdateCourseResponseSchema, CourseSchema, \
-    CreateCourseResponseSchema, GetCourseByUserResponseSchema, CreateCourseRequestSchema
+import allure
+
+from clients.courses.courses_schema import (
+    CourseSchema,
+    CreateCourseRequestSchema,
+    CreateCourseResponseSchema,
+    GetCourseByUserResponseSchema,
+    UpdateCourseRequestSchema,
+    UpdateCourseResponseSchema,
+)
 from tools.assertions.files import assert_file
 from tools.assertions.users import assert_user
-from tools.base_assertions import assert_value, assert_is_true
+from tools.base_assertions import assert_is_true, assert_value
 
 
+@allure.step("Проверка ответа на запрос обновления курса")
 def assert_update_course_response(request: UpdateCourseRequestSchema, response: UpdateCourseResponseSchema):
     """
     Проверяет, что ответ на обновление курса соответствует запросу.
@@ -19,6 +28,7 @@ def assert_update_course_response(request: UpdateCourseRequestSchema, response: 
     assert_value(response.course.description, request.description, "description")
     assert_value(response.course.estimated_time, request.estimated_time, "estimated_time")
 
+@allure.step("Проверка курса")
 def assert_course(actual: CourseSchema, expected: CourseSchema):
     """
     Проверяет, что фактические данные курса соответствует ожидаемым
@@ -37,6 +47,7 @@ def assert_course(actual: CourseSchema, expected: CourseSchema):
     assert_file(actual.preview_file, expected.preview_file)
     assert_user(actual.created_by_user, expected.created_by_user)
 
+@allure.step("Проверка ответа на запрос получения курса")
 def assert_get_courses_response(
         get_courses_response: GetCourseByUserResponseSchema,
         create_courses_response: list[CreateCourseResponseSchema]
@@ -53,6 +64,7 @@ def assert_get_courses_response(
     for index, create_course_response in enumerate(create_courses_response):
         assert_course(get_courses_response.courses[index], create_course_response.course)
 
+@allure.step("Проверка ответа на запрос создания курса")
 def assert_create_course_response(response: CreateCourseResponseSchema, request: CreateCourseRequestSchema):
     """
     Проверяет, что ответ на создание курса соответствует запросу

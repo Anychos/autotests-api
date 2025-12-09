@@ -1,29 +1,32 @@
+import allure
 from httpx import Response
 
-from clients.base_client import BaseClient
+from clients.base_client import BaseAPIClient
 from clients.files.files_schema import CreateFileRequestSchema, CreateFileResponseSchema
 from clients.private_builder import AuthUserSchema, get_private_client
 
 
-class FilesClient(BaseClient):
+class FilesAPIClient(BaseAPIClient):
     """
     Клиент для работы с файлами
     """
+    @allure.step("Получение файла")
     def get_file_api(self, file_id: str) -> Response:
         """
         Получение информации о файле по id
 
         :param file_id: id файла
-        :return: ответ сервера
+        :return: Ответ сервера
         """
         return self.get(f'/api/v1/files/{file_id}')
 
+    @allure.step("Создание файла")
     def create_file_api(self, request_body: CreateFileRequestSchema) -> Response:
         """
         Загрузка файла
 
-        :param request_body: тело запроса
-        :return: ответ сервера
+        :param request_body: Тело запроса
+        :return: Ответ сервера
         """
         return self.post(
             '/api/v1/files',
@@ -31,23 +34,26 @@ class FilesClient(BaseClient):
             files={'upload_file': open(request_body.upload_file, 'rb')}
         )
 
+    @allure.step("Создание файла и валидация ответа по схеме")
     def create_file(self, request_body: CreateFileRequestSchema) -> CreateFileResponseSchema:
         response = self.create_file_api(request_body)
         return CreateFileResponseSchema.model_validate_json(response.text)
 
+    @allure.step("Удаление файла")
     def delete_file_api(self, file_id: str) -> Response:
         """
         Удаление файла по id
 
         :param file_id: id файла
-        :return: ответ сервера
+        :return: Ответ сервера
         """
         return self.delete(f'/api/v1/files/{file_id}')
 
-def get_private_files_client(user: AuthUserSchema) -> FilesClient:
+@allure.step("Получение клиента для работы с API файлов")
+def get_private_files_client(user: AuthUserSchema) -> FilesAPIClient:
     """
     Функция получения клиента для работы с методами файлов
 
     :return: Готовый к использованию Client
     """
-    return FilesClient(client=get_private_client(user))
+    return FilesAPIClient(client=get_private_client(user))
