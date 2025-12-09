@@ -1,6 +1,8 @@
 from http import HTTPStatus
 import pytest
+import allure
 
+from tools.allure.tags import AllureTags
 from clients.error_schema import ValidationErrorResponseSchema, InternalErrorResponseSchema
 from clients.files.files_client import FilesClient
 from clients.files.files_schema import CreateFileRequestSchema, CreateFileResponseSchema, GetFileResponseSchema
@@ -10,13 +12,28 @@ from tools.assertions.files import assert_create_file_response, assert_get_file_
     assert_file_not_found_response, assert_get_file_with_incorrect_file_id_response
 from tools.assertions.schema import validate_json_schema
 from tools.base_assertions import assert_status_code
+from tools.allure.epics import AllureEpic
+from tools.allure.stories import AllureStory
+from tools.allure.features import AllureFeature
+from tools.allure.parent_suite import AllureParentSuite
+from tools.allure.sub_suite import AllureSubSuite
+from tools.allure.suite import AllureSuite
 
 
 @pytest.mark.files
 @pytest.mark.regression
 @pytest.mark.smoke
 @pytest.mark.positive
+@allure.tag(AllureTags.FILES, AllureTags.REGRESSION, AllureTags.SMOKE, AllureTags.POSITIVE)
+@allure.epic(AllureEpic.LMS)
+@allure.feature(AllureFeature.FILES)
+@allure.parent_suite(AllureParentSuite.LMS)
+@allure.suite(AllureSuite.FILES)
 class TestFilesPositive:
+    @allure.tag(AllureTags.CREATE_ENTITY)
+    @allure.story(AllureStory.CREATE_ENTITY)
+    @allure.sub_suite(AllureSubSuite.CREATE_ENTITY)
+    @allure.title("Создание файла")
     def test_create_file(self, files_client: FilesClient):
         request = CreateFileRequestSchema()
 
@@ -27,6 +44,10 @@ class TestFilesPositive:
         validate_json_schema(instance=response.json(), schema=response_data.model_json_schema())
         assert_create_file_response(request, response_data)
 
+    @allure.tag(AllureTags.GET_ENTITY)
+    @allure.story(AllureStory.GET_ENTITY)
+    @allure.sub_suite(AllureSubSuite.GET_ENTITY)
+    @allure.title("Получение данных файла")
     def test_get_file(self, function_create_file: FileFixture, files_client: FilesClient):
         response = files_client.get_file_api(function_create_file.response.file.id)
         response_data = GetFileResponseSchema.model_validate_json(response.text)
@@ -35,30 +56,10 @@ class TestFilesPositive:
         validate_json_schema(instance=response.json(), schema=response_data.model_json_schema())
         assert_get_file_response(response_data, function_create_file.response)
 
-@pytest.mark.files
-@pytest.mark.regression
-@pytest.mark.negative
-class TestFilesNegative:
-    def test_create_file_without_filename(self, files_client: FilesClient):
-        request = CreateFileRequestSchema(filename='')
-
-        response = files_client.create_file_api(request)
-        response_data = ValidationErrorResponseSchema.model_validate_json(response.text)
-
-        assert_status_code(response.status_code, HTTPStatus.UNPROCESSABLE_ENTITY)
-        assert_create_file_with_empty_filename_response(response_data)
-        validate_json_schema(instance=response.json(), schema=response_data.model_json_schema())
-
-    def test_create_file_without_directory(self, files_client: FilesClient):
-        request = CreateFileRequestSchema(directory='')
-
-        response = files_client.create_file_api(request)
-        response_data = ValidationErrorResponseSchema.model_validate_json(response.text)
-
-        assert_status_code(response.status_code, HTTPStatus.UNPROCESSABLE_ENTITY)
-        assert_create_file_with_empty_directory_response(response_data)
-        validate_json_schema(instance=response.json(), schema=response_data.model_json_schema())
-
+    @allure.tag(AllureTags.DELETE_ENTITY)
+    @allure.story(AllureStory.DELETE_ENTITY)
+    @allure.sub_suite(AllureSubSuite.DELETE_ENTITY)
+    @allure.title("Удаление файла")
     def test_delete_file(self, files_client: FilesClient, function_create_file: FileFixture):
         delete_response = files_client.delete_file_api(function_create_file.response.file.id)
 
@@ -71,6 +72,47 @@ class TestFilesNegative:
         assert_file_not_found_response(get_response_data)
         validate_json_schema(get_response.json(), get_response_data.model_json_schema())
 
+@pytest.mark.files
+@pytest.mark.regression
+@pytest.mark.negative
+@allure.tag(AllureTags.REGRESSION, AllureTags.FILES, AllureTags.NEGATIVE)
+@allure.epic(AllureEpic.LMS)
+@allure.feature(AllureFeature.FILES)
+@allure.parent_suite(AllureParentSuite.LMS)
+@allure.suite(AllureSuite.FILES)
+class TestFilesNegative:
+    @allure.tag(AllureTags.CREATE_ENTITY)
+    @allure.story(AllureStory.CREATE_ENTITY)
+    @allure.sub_suite(AllureSubSuite.CREATE_ENTITY)
+    @allure.title("Создание файла без указания имени")
+    def test_create_file_without_filename(self, files_client: FilesClient):
+        request = CreateFileRequestSchema(filename='')
+
+        response = files_client.create_file_api(request)
+        response_data = ValidationErrorResponseSchema.model_validate_json(response.text)
+
+        assert_status_code(response.status_code, HTTPStatus.UNPROCESSABLE_ENTITY)
+        assert_create_file_with_empty_filename_response(response_data)
+        validate_json_schema(instance=response.json(), schema=response_data.model_json_schema())
+
+    @allure.tag(AllureTags.CREATE_ENTITY)
+    @allure.story(AllureStory.CREATE_ENTITY)
+    @allure.sub_suite(AllureSubSuite.CREATE_ENTITY)
+    @allure.title("Создание файла без указания директории")
+    def test_create_file_without_directory(self, files_client: FilesClient):
+        request = CreateFileRequestSchema(directory='')
+
+        response = files_client.create_file_api(request)
+        response_data = ValidationErrorResponseSchema.model_validate_json(response.text)
+
+        assert_status_code(response.status_code, HTTPStatus.UNPROCESSABLE_ENTITY)
+        assert_create_file_with_empty_directory_response(response_data)
+        validate_json_schema(instance=response.json(), schema=response_data.model_json_schema())
+
+    @allure.tag(AllureTags.GET_ENTITY)
+    @allure.story(AllureStory.GET_ENTITY)
+    @allure.sub_suite(AllureSubSuite.GET_ENTITY)
+    @allure.title("Получение файла с некорректным id")
     def test_get_file_with_incorrect_file_id(self, files_client: FilesClient):
         response = files_client.get_file_api(file_id="incorrect-file-id")
         response_data = ValidationErrorResponseSchema.model_validate_json(response.text)

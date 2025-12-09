@@ -19,12 +19,6 @@ class PublicUserClient(BaseClient):
         return self.post('/api/v1/users', json=request_body.model_dump(by_alias=True))
 
     def create_user(self, request_body: CreateUserRequestSchema) -> CreateUserResponseSchema:
-        """
-        Функция для получения сущности пользователя
-
-        :param request_body: словарь с данными пользователя
-        :return: ответ сервера
-        """
         response = self.create_user_api(request_body)
         return CreateUserResponseSchema.model_validate_json(response.text)
 

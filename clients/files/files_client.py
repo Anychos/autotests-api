@@ -32,12 +32,6 @@ class FilesClient(BaseClient):
         )
 
     def create_file(self, request_body: CreateFileRequestSchema) -> CreateFileResponseSchema:
-        """
-        Загрузка файла
-
-        :param request_body: тело запроса
-        :return: ответ сервера
-        """
         response = self.create_file_api(request_body)
         return CreateFileResponseSchema.model_validate_json(response.text)
 

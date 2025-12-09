@@ -28,12 +28,6 @@ class AuthClient(BaseClient):
         return self.post('/api/v1/authentication/refresh', json=request_body.model_dump(by_alias=True))
 
     def login(self, request_body: LoginRequestSchema) -> LoginResponseSchema:
-        """
-        Функция для авторизации и получения json ответа
-
-        :param request_body: словарь с почтой и паролем
-        :return: ответ сервера в формате json
-        """
         response = self.login_api(request_body)
         return LoginResponseSchema.model_validate_json(response.text) # вернет объект json, не поднимет ошибку
 

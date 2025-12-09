@@ -1,19 +1,35 @@
 from http import HTTPStatus
 import pytest
+import allure
 
-from tools.assertions.schema import validate_json_schema
 
 from clients.auth.auth_client import AuthClient
 from clients.auth.auth_schema import LoginRequestSchema, LoginResponseSchema
 from fixtures.users import UserFixture
 from tools.assertions.auth import assert_login_response
 from tools.base_assertions import assert_status_code
+from tools.assertions.schema import validate_json_schema
+from tools.allure.tags import AllureTags
+from tools.allure.epics import AllureEpic
+from tools.allure.stories import AllureStory
+from tools.allure.features import AllureFeature
+from tools.allure.parent_suite import AllureParentSuite
+from tools.allure.sub_suite import AllureSubSuite
+from tools.allure.suite import AllureSuite
 
 
 @pytest.mark.regression
 @pytest.mark.smoke
 @pytest.mark.authentication
+@allure.tag(AllureTags.AUTHENTICATION, AllureTags.REGRESSION, AllureTags.SMOKE, AllureTags.POSITIVE)
+@allure.epic(AllureEpic.LMS)
+@allure.feature(AllureFeature.AUTHENTICATION)
+@allure.parent_suite(AllureParentSuite.LMS)
+@allure.suite(AllureSuite.AUTHENTICATION)
 class TestAuthentication:
+    @allure.story(AllureStory.LOGIN)
+    @allure.sub_suite(AllureSubSuite.LOGIN)
+    @allure.title("Логин существующего пользователя")
     def test_login(self,
             function_create_user: UserFixture,
             auth_client: AuthClient

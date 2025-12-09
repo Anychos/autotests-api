@@ -38,12 +38,6 @@ class CoursesClient(BaseClient):
         return self.post('/api/v1/courses', json=request_body.model_dump(by_alias=True))
 
     def create_course(self, request_body: CreateCourseRequestSchema) -> CreateCourseResponseSchema:
-        """
-        Создание курса
-
-        :param request_body: тело запроса с данными курса
-        :return: ответ сервера с сущностью созданного курса
-        """
         response = self.create_course_api(request_body)
         return CreateCourseResponseSchema.model_validate_json(response.text)
 
@@ -58,12 +52,6 @@ class CoursesClient(BaseClient):
         return self.patch(f'/api/v1/courses/{course_id}', json=request_body.model_dump(by_alias=True))
 
     def delete_course_api(self, course_id: str) -> Response:
-        """
-        Удаление курса
-
-        :param course_id: id курса
-        :return: ответ сервера
-        """
         return self.delete(f'/api/v1/courses/{course_id}')
 
 def get_private_courses_client(user: AuthUserSchema) -> CoursesClient:
