@@ -1,4 +1,6 @@
-from pydantic import BaseModel, Field, HttpUrl
+from pydantic import BaseModel, Field, HttpUrl, FilePath
+
+from config import settings
 
 
 class CreateFileRequestSchema(BaseModel):
@@ -7,7 +9,7 @@ class CreateFileRequestSchema(BaseModel):
     """
     filename: str = Field(default='image.png')
     directory: str = Field(default='courses')
-    upload_file: str = Field(default='./test_data/image.png')
+    upload_file: FilePath = Field(default=settings.test_data.image_png_file)
 
 class FileSchema(BaseModel):
     """

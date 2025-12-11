@@ -9,6 +9,7 @@ from clients.files.files_schema import (
 )
 from tools.assertions.errors import assert_internal_error_response, assert_validation_error_response
 from tools.base_assertions import assert_value
+from config import settings
 
 
 @allure.step("Проверка ответа на запрос создания файла")
@@ -20,7 +21,7 @@ def assert_create_file_response(request: CreateFileRequestSchema, response: Crea
     :param response: Схема ответа сервера на запрос создания файла
     :raises AssertionError: Если хотя бы одно поле не совпадает
     """
-    expected_url = f"http://localhost:8000/static/{request.directory}/{request.filename}" # динамически формируем url
+    expected_url = f"{settings.http_client.url}static/{request.directory}/{request.filename}" # динамически формируем url
 
     assert_value(response.file.filename, request.filename, "filename")
     assert_value(response.file.directory, request.directory, "directory")

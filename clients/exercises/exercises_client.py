@@ -56,7 +56,7 @@ class ExercisesAPIClient(BaseAPIClient):
         """
         Выполняет POST запрос для создания упражнения
 
-        :param request_body: Тело запроса
+        :param request_body: Тело запроса 
         :return: Ответ сервера
         """
         return self.post("/api/v1/exercises", json=request_body.model_dump(by_alias=True))

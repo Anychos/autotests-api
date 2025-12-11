@@ -31,7 +31,7 @@ class FilesAPIClient(BaseAPIClient):
         return self.post(
             '/api/v1/files',
             data=request_body.model_dump(by_alias=True, exclude={'upload_file'}),
-            files={'upload_file': open(request_body.upload_file, 'rb')}
+            files={'upload_file': request_body.upload_file.read_bytes()}
         )
 
     @allure.step("Создание файла и валидация ответа по схеме")
