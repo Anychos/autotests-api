@@ -4,6 +4,7 @@ from httpx import Response
 from clients.base_client import BaseAPIClient
 from clients.public_builder import get_public_client
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema
+from tools.routes import APIRoutes
 
 
 class PublicUserAPIClient(BaseAPIClient):
@@ -18,7 +19,7 @@ class PublicUserAPIClient(BaseAPIClient):
         :param request_body: словарь с данными пользователя
         :return: ответ сервера
         """
-        return self.post('/api/v1/users', json=request_body.model_dump(by_alias=True))
+        return self.post(APIRoutes.USERS, json=request_body.model_dump(by_alias=True))
 
     @allure.step("Создание пользователя и валидация ответа по схеме")
     def create_user(self, request_body: CreateUserRequestSchema) -> CreateUserResponseSchema:

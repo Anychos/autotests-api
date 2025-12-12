@@ -4,6 +4,7 @@ from httpx import Response
 from clients.base_client import BaseAPIClient
 from clients.private_builder import AuthUserSchema, get_private_client
 from clients.users.users_schema import GetUserResponseSchema, UpdateUserRequestSchema
+from tools.routes import APIRoutes
 
 
 class PrivateUserAPIClient(BaseAPIClient):
@@ -17,7 +18,7 @@ class PrivateUserAPIClient(BaseAPIClient):
 
         :return: ответ сервера
         """
-        return self.get('/api/v1/users/me')
+        return self.get(f'{APIRoutes.USERS}/me')
 
     @allure.step("Получение пользователя по id: {user_id}")
     def get_user_by_id_api(self, user_id: str) -> Response:
@@ -27,7 +28,7 @@ class PrivateUserAPIClient(BaseAPIClient):
         :param user_id: id пользователя
         :return: ответ сервера
         """
-        return self.get(f'/api/v1/users/{user_id}')
+        return self.get(f'{APIRoutes.USERS}/{user_id}')
 
     @allure.step("Получение пользователя по id: {user_id} и валидация ответа по схеме")
     def get_user_by_id(self, user_id: str) -> GetUserResponseSchema:
@@ -49,7 +50,7 @@ class PrivateUserAPIClient(BaseAPIClient):
         :param request_body: параметры запроса
         :return: ответ сервера
         """
-        return self.patch(f'/api/v1/users/{user_id}', json=request_body.model_dump(by_alias=True))
+        return self.patch(f'{APIRoutes.USERS}/{user_id}', json=request_body.model_dump(by_alias=True))
 
     @allure.step("Удаление пользователя с id: {user_id}")
     def delete_user_api(self, user_id: str) -> Response:
@@ -59,7 +60,7 @@ class PrivateUserAPIClient(BaseAPIClient):
         :param user_id: id пользователя
         :return: ответ сервера
         """
-        return self.delete(f'/api/v1/users/{user_id}')
+        return self.delete(f'{APIRoutes.USERS}/{user_id}')
 
 @allure.step("Получение клиента для работы с приватным API")
 def get_private_user_client(user: AuthUserSchema) -> PrivateUserAPIClient:

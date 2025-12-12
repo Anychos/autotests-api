@@ -4,6 +4,7 @@ from httpx import Response
 from clients.auth.auth_schema import LoginRequestSchema, LoginResponseSchema, RefreshRequestSchema
 from clients.base_client import BaseAPIClient
 from clients.public_builder import get_public_client
+from tools.routes import APIRoutes
 
 
 class AuthAPIClient(BaseAPIClient):
@@ -18,7 +19,7 @@ class AuthAPIClient(BaseAPIClient):
         :param request_body: Словарь с почтой и паролем
         :return: Ответ сервера с токеном
         """
-        return self.post('/api/v1/authentication/login', json=request_body.model_dump(by_alias=True))
+        return self.post(f'{APIRoutes.AUTHENTICATION}/login', json=request_body.model_dump(by_alias=True))
 
     @allure.step("Обновление токена")
     def refresh_api(self, request_body: RefreshRequestSchema) -> Response:
@@ -28,7 +29,7 @@ class AuthAPIClient(BaseAPIClient):
         :param request_body: Словарь с рефреш токеном
         :return: Ответ сервера с обновленным токеном
         """
-        return self.post('/api/v1/authentication/refresh', json=request_body.model_dump(by_alias=True))
+        return self.post(f'{APIRoutes.AUTHENTICATION}/refresh', json=request_body.model_dump(by_alias=True))
 
     @allure.step("Логин пользователя и валидация ответа по схеме")
     def login(self, request_body: LoginRequestSchema) -> LoginResponseSchema:

@@ -15,6 +15,7 @@ from clients.exercises.exercises_schema import (
     UpdateExerciseResponseSchema,
 )
 from clients.private_builder import AuthUserSchema, get_private_client
+from tools.routes import APIRoutes
 
 
 class ExercisesAPIClient(BaseAPIClient):
@@ -29,7 +30,7 @@ class ExercisesAPIClient(BaseAPIClient):
         :param query: Параметры запроса
         :return: Ответ сервера
         """
-        return self.get("/api/v1/exercises", params=query.model_dump(by_alias=True))
+        return self.get(APIRoutes.EXERCISES, params=query.model_dump(by_alias=True))
 
     @allure.step("Получение списка упражнений и валидация ответа по схеме")
     def get_exercises(self, course_id: GetExercisesQuerySchema) -> GetExercisesResponseSchema:
@@ -44,7 +45,7 @@ class ExercisesAPIClient(BaseAPIClient):
         :param query: id упражнения
         :return: Ответ сервера
         """
-        return self.get(f"/api/v1/exercises/{query.exercise_id}")
+        return self.get(f"{APIRoutes.EXERCISES}/{query.exercise_id}")
 
     @allure.step("Получение упражнения с id: {query}")
     def get_exercise(self, query: GetExerciseQuerySchema) -> GetExerciseResponseSchema:
@@ -59,7 +60,7 @@ class ExercisesAPIClient(BaseAPIClient):
         :param request_body: Тело запроса 
         :return: Ответ сервера
         """
-        return self.post("/api/v1/exercises", json=request_body.model_dump(by_alias=True))
+        return self.post(APIRoutes.EXERCISES, json=request_body.model_dump(by_alias=True))
 
     @allure.step("Создание упражнения и валидация ответа по схеме")
     def create_exercise(self, request_body: CreateExerciseRequestSchema) -> CreateExerciseResponseSchema:
@@ -75,7 +76,7 @@ class ExercisesAPIClient(BaseAPIClient):
         :param request_body: Тело запроса
         :return: Ответ сервера
         """
-        return self.patch(f"/api/v1/exercises/{query.exercise_id}", json=request_body.model_dump(by_alias=True))
+        return self.patch(f"{APIRoutes.EXERCISES}/{query.exercise_id}", json=request_body.model_dump(by_alias=True))
 
     @allure.step("Обновление упражнения с id: {query} и валидация ответа по схеме")
     def update_exercise(self, exercise_id: UpdateExerciseQuerySchema, request_body: UpdateExerciseRequestSchema) -> UpdateExerciseResponseSchema:
@@ -90,7 +91,7 @@ class ExercisesAPIClient(BaseAPIClient):
         :param query: id упражнения
         :return: Ответ сервера
         """
-        return self.delete(f"/api/v1/exercises/{query.exercise_id}")
+        return self.delete(f"{APIRoutes.EXERCISES}/{query.exercise_id}")
 
 @allure.step("Получение клиента для работы с API упражнений")
 def get_private_exercises_client(user: AuthUserSchema) -> ExercisesAPIClient:

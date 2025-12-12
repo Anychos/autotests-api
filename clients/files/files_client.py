@@ -4,6 +4,7 @@ from httpx import Response
 from clients.base_client import BaseAPIClient
 from clients.files.files_schema import CreateFileRequestSchema, CreateFileResponseSchema
 from clients.private_builder import AuthUserSchema, get_private_client
+from tools.routes import APIRoutes
 
 
 class FilesAPIClient(BaseAPIClient):
@@ -18,7 +19,7 @@ class FilesAPIClient(BaseAPIClient):
         :param file_id: id файла
         :return: Ответ сервера
         """
-        return self.get(f'/api/v1/files/{file_id}')
+        return self.get(f'{APIRoutes.FILES}/{file_id}')
 
     @allure.step("Создание файла")
     def create_file_api(self, request_body: CreateFileRequestSchema) -> Response:
@@ -29,7 +30,7 @@ class FilesAPIClient(BaseAPIClient):
         :return: Ответ сервера
         """
         return self.post(
-            '/api/v1/files',
+            APIRoutes.FILES,
             data=request_body.model_dump(by_alias=True, exclude={'upload_file'}),
             files={'upload_file': request_body.upload_file.read_bytes()}
         )
@@ -47,7 +48,7 @@ class FilesAPIClient(BaseAPIClient):
         :param file_id: id файла
         :return: Ответ сервера
         """
-        return self.delete(f'/api/v1/files/{file_id}')
+        return self.delete(f'{APIRoutes.FILES}/{file_id}')
 
 @allure.step("Получение клиента для работы с API файлов")
 def get_private_files_client(user: AuthUserSchema) -> FilesAPIClient:

@@ -9,6 +9,7 @@ from clients.courses.courses_schema import (
     UpdateCourseRequestSchema,
 )
 from clients.private_builder import AuthUserSchema, get_private_client
+from tools.routes import APIRoutes
 
 
 class CoursesAPIClient(BaseAPIClient):
@@ -23,7 +24,7 @@ class CoursesAPIClient(BaseAPIClient):
         :param query: id пользователя
         :return: Ответ сервера с сущностью курса
         """
-        return self.get('/api/v1/courses', params=query.model_dump(by_alias=True))
+        return self.get(APIRoutes.COURSES, params=query.model_dump(by_alias=True))
 
     @allure.step("Получение курса с id: {course_id}")
     def get_course_api(self, course_id: str) -> Response:
@@ -33,7 +34,7 @@ class CoursesAPIClient(BaseAPIClient):
         :param course_id: id курса
         :return: Ответ сервера с сущностью курса
         """
-        return self.get(f'/api/v1/courses/{course_id}')
+        return self.get(f'{APIRoutes.COURSES}/{course_id}')
 
     @allure.step("Создание курса")
     def create_course_api(self, request_body: CreateCourseRequestSchema) -> Response:
@@ -43,7 +44,7 @@ class CoursesAPIClient(BaseAPIClient):
         :param request_body: Тело запроса с данными курса
         :return: Ответ сервера с сущностью созданного курса
         """
-        return self.post('/api/v1/courses', json=request_body.model_dump(by_alias=True))
+        return self.post(APIRoutes.COURSES, json=request_body.model_dump(by_alias=True))
 
     @allure.step("Создание курса и валидация ответа по схеме")
     def create_course(self, request_body: CreateCourseRequestSchema) -> CreateCourseResponseSchema:
@@ -59,11 +60,11 @@ class CoursesAPIClient(BaseAPIClient):
         :param request_body: Тело запроса с данными для обновления
         :return: Ответ сервера с обновленной сущностью курса
         """
-        return self.patch(f'/api/v1/courses/{course_id}', json=request_body.model_dump(by_alias=True))
+        return self.patch(f'{APIRoutes.COURSES}/{course_id}', json=request_body.model_dump(by_alias=True))
 
     @allure.step("Удаление курса")
     def delete_course_api(self, course_id: str) -> Response:
-        return self.delete(f'/api/v1/courses/{course_id}')
+        return self.delete(f'{APIRoutes.COURSES}/{course_id}')
 
 @allure.step("Получение клиента для работы с API курсов")
 def get_private_courses_client(user: AuthUserSchema) -> CoursesAPIClient:
