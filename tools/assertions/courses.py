@@ -11,7 +11,9 @@ from clients.courses.courses_schema import (
 from tools.assertions.files import assert_file
 from tools.assertions.users import assert_user
 from tools.base_assertions import assert_is_true, assert_value
+from tools.logger import get_logger
 
+logger = get_logger("COURSES_ASSERTIONS")
 
 @allure.step("Проверка ответа на запрос обновления курса")
 def assert_update_course_response(request: UpdateCourseRequestSchema, response: UpdateCourseResponseSchema):
@@ -22,6 +24,7 @@ def assert_update_course_response(request: UpdateCourseRequestSchema, response: 
     :param response: Ответ API с данными курса.
     :raises AssertionError: Если хотя бы одно поле не совпадает.
     """
+    logger.info("Проверка ответа на запрос обновления курса")
     assert_value(response.course.title, request.title, "title")
     assert_value(response.course.max_score, request.max_score, "max_score")
     assert_value(response.course.min_score, request.min_score, "min_score")
@@ -37,6 +40,7 @@ def assert_course(actual: CourseSchema, expected: CourseSchema):
     :param expected: Ожидаемые данные курса
     :raises AssertionError: Если хотя бы одно поле не совпадает
     """
+    logger.info("Проверка курса")
     assert_value(actual.id, expected.id, "id")
     assert_value(actual.title, expected.title, "title")
     assert_value(actual.max_score, expected.max_score, "max_score")
@@ -59,6 +63,7 @@ def assert_get_courses_response(
     :param create_courses_response: Схема ответа на создание курсов
     :raises AssertionError: Если хотя бы одно поле не совпадает
     """
+    logger.info("Проверка ответа на запрос получения курса")
     assert_value(len(get_courses_response.courses), len(create_courses_response), "courses")
 
     for index, create_course_response in enumerate(create_courses_response):
@@ -73,6 +78,7 @@ def assert_create_course_response(response: CreateCourseResponseSchema, request:
     :param request: Данные ответа на создание курса
     :raises AssertionError: Если данные не совпадают
     """
+    logger.info("Проверка ответа на запрос создания курса")
     assert_is_true(response.course.id, "id")
     assert_value(response.course.title, request.title, "title")
     assert_value(response.course.max_score, request.max_score, "max_score")
