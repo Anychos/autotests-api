@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35dcc119-d232-4ca4-bf9e-df26db2ff1e6" name="Changes" comment="Улучшение работы с API клиентами с помощью Enum для URI: Практика работы с использованием APIRoutes в API-клиентах">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="35dcc119-d232-4ca4-bf9e-df26db2ff1e6" name="Changes" comment="Улучшение работы с API клиентами с помощью Enum для URI: Практика работы с использованием APIRoutes в API-клиентах" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,50 +44,51 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python tests.Python tests for test_authentication.TestAuthentication.test_login.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_authentication.test_login.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_exercises.TestExercisesPositive.test_get_exercise.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_files.TestFilesNegative.test_create_file_without_filename.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_files.TestFilesNegative.test_delete_file.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_files.TestFilesPositive.test_create_file.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_users.TestUser.test_create_user.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_users.test_create_user.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_users.test_get_user_me.executor&quot;: &quot;Run&quot;,
-    &quot;Python.api_client_create_course.executor&quot;: &quot;Run&quot;,
-    &quot;Python.api_client_create_exercise (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.api_client_create_exercise.executor&quot;: &quot;Run&quot;,
-    &quot;Python.api_client_create_user.executor&quot;: &quot;Run&quot;,
-    &quot;Python.api_client_get_user (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.client.executor&quot;: &quot;Run&quot;,
-    &quot;Python.course_schema.executor&quot;: &quot;Run&quot;,
-    &quot;Python.data_generator.executor&quot;: &quot;Run&quot;,
-    &quot;Python.example_1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.exercises_client.executor&quot;: &quot;Run&quot;,
-    &quot;Python.faker.executor&quot;: &quot;Run&quot;,
-    &quot;Python.json_schema.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pydantic_learn.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test_create_exercise.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test_data_generator.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;dev.sweep.assistant.data.RecentlyUsedFiles&quot;: &quot;config.py;clients\\public_builder.py&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/anton/PycharmProjects/autotests-api&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;sweep.chatMode&quot;: &quot;Agent&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Python tests.Python tests for test_authentication.TestAuthentication.test_login.executor": "Run",
+    "Python tests.Python tests for test_authentication.test_login.executor": "Run",
+    "Python tests.Python tests for test_exercises.TestExercisesPositive.test_get_exercise.executor": "Run",
+    "Python tests.Python tests for test_files.TestFilesNegative.test_create_file_without_filename.executor": "Run",
+    "Python tests.Python tests for test_files.TestFilesNegative.test_delete_file.executor": "Run",
+    "Python tests.Python tests for test_files.TestFilesPositive.test_create_file.executor": "Run",
+    "Python tests.Python tests for test_users.TestUser.test_create_user.executor": "Run",
+    "Python tests.Python tests for test_users.test_create_user.executor": "Run",
+    "Python tests.Python tests for test_users.test_get_user_me.executor": "Run",
+    "Python.api_client_create_course.executor": "Run",
+    "Python.api_client_create_exercise (1).executor": "Run",
+    "Python.api_client_create_exercise.executor": "Run",
+    "Python.api_client_create_user.executor": "Run",
+    "Python.api_client_get_user (1).executor": "Run",
+    "Python.client.executor": "Run",
+    "Python.course_schema.executor": "Run",
+    "Python.data_generator.executor": "Run",
+    "Python.example_1.executor": "Run",
+    "Python.exercises_client.executor": "Run",
+    "Python.faker.executor": "Run",
+    "Python.json_schema.executor": "Run",
+    "Python.pydantic_learn.executor": "Run",
+    "Python.test.executor": "Run",
+    "Python.test_create_exercise.executor": "Run",
+    "Python.test_data_generator.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "com.codeium.enabled": "true",
+    "dev.sweep.assistant.data.RecentlyUsedFiles": ".gitignore;.venv\\.gitignore;clients\\error_schema.py;requirements.txt;clients\\private_builder.py;config.py;clients\\public_builder.py",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/anton/PycharmProjects/autotests-api",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "sweep.chatMode": "Agent",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\anton\PycharmProjects\autotests-api\lessons" />
@@ -262,6 +261,7 @@
       <workItem from="1765428473615" duration="3011000" />
       <workItem from="1765504128410" duration="5028000" />
       <workItem from="1765584130956" duration="3060000" />
+      <workItem from="1765591054106" duration="1417000" />
     </task>
     <task id="LOCAL-00001" summary="Практика написания Pydantic-моделей">
       <option name="closed" value="true" />
