@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35dcc119-d232-4ca4-bf9e-df26db2ff1e6" name="Changes" comment="Добавляем информацию о переменных окружения в Allure отчет: Практика работы с переменными окружения в Allure">
-      <change afterPath="$PROJECT_DIR$/tools/routes.py" afterDir="false" />
+    <list default="true" id="35dcc119-d232-4ca4-bf9e-df26db2ff1e6" name="Changes" comment="Улучшение работы с API клиентами с помощью Enum для URI: Практика работы с использованием APIRoutes в API-клиентах">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/auth/auth_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/auth/auth_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/courses/courses_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/courses/courses_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/exercises/exercises_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/exercises/exercises_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/files/files_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/files/files_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/users/private_user_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/users/private_user_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/users/public_user_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/clients/users/public_user_client.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +260,8 @@
       <workItem from="1765343759647" duration="129000" />
       <workItem from="1765343898290" duration="1580000" />
       <workItem from="1765428473615" duration="3011000" />
-      <workItem from="1765504128410" duration="4963000" />
+      <workItem from="1765504128410" duration="5028000" />
+      <workItem from="1765584130956" duration="3060000" />
     </task>
     <task id="LOCAL-00001" summary="Практика написания Pydantic-моделей">
       <option name="closed" value="true" />
@@ -413,7 +407,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765508449748</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Улучшение работы с API клиентами с помощью Enum для URI: Практика работы с использованием APIRoutes в API-клиентах">
+      <option name="closed" value="true" />
+      <created>1765509191395</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1765509191395</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -436,7 +438,8 @@
     <MESSAGE value="Настройки автотестов с Pydantic: Практика работы с настройками" />
     <MESSAGE value="Добавляем логирование для API автотестов: Практика работы с логированием" />
     <MESSAGE value="Добавляем информацию о переменных окружения в Allure отчет: Практика работы с переменными окружения в Allure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавляем информацию о переменных окружения в Allure отчет: Практика работы с переменными окружения в Allure" />
+    <MESSAGE value="Улучшение работы с API клиентами с помощью Enum для URI: Практика работы с использованием APIRoutes в API-клиентах" />
+    <option name="LAST_COMMIT_MESSAGE" value="Улучшение работы с API клиентами с помощью Enum для URI: Практика работы с использованием APIRoutes в API-клиентах" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/autotests_api$api_client_create_exercise.coverage" NAME="api_client_create_exercise Coverage Results" MODIFIED="1763873774867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
